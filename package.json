@@ -1,0 +1,29 @@
+{
+  "name": "boonscrolling",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Swipe to learn: a doomscrolling replacement PWA with spaced repetition.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "data": "node scripts/build-data.mjs",
+    "format": "prettier --write \"src/**/*.{ts,css}\" \"tests/**/*.ts\" \"content/*.json\" vite.config.ts sw/sw.js scripts/*.mjs"
+  },
+  "devDependencies": {
+    "@types/d3-geo": "^3.1.1",
+    "@types/geojson": "^7946.0.16",
+    "@types/node": "^26.6.5",
+    "fake-indexeddb": "^6.2.5",
+    "prettier": "^3.9.10",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.3"
+  },
+  "dependencies": {
+    "d3-geo": "^3.1.1"
+  }
+}

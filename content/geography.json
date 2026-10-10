@@ -1,0 +1,150 @@
+{
+  "id": "geography",
+  "title": "Planet Earth",
+  "category": "geography",
+  "cards": [
+    {
+      "id": "russia-timezones",
+      "type": "fact",
+      "emoji": "🕰️",
+      "title": "Eleven time zones",
+      "text": "Russia spans 11 time zones. When it is evening in Kaliningrad on the Baltic, it is already the next morning in Kamchatka."
+    },
+    {
+      "id": "lake-baikal",
+      "type": "fact",
+      "emoji": "💧",
+      "title": "The deepest lake",
+      "text": "Lake Baikal in Siberia is the world's deepest lake at over 1,600 metres and holds about a fifth of the world's unfrozen fresh surface water."
+    },
+    {
+      "id": "dead-sea",
+      "type": "fact",
+      "emoji": "🧂",
+      "title": "Lowest land",
+      "text": "The shore of the Dead Sea, more than 430 metres below sea level, is the lowest point on dry land. Its water is so salty that people float effortlessly."
+    },
+    {
+      "id": "canada-coast",
+      "type": "fact",
+      "emoji": "🍁",
+      "title": "Endless coastline",
+      "text": "Canada has the longest coastline of any country, over 200,000 km, thanks to its tens of thousands of Arctic islands."
+    },
+    {
+      "id": "q-longest-river",
+      "type": "quiz",
+      "question": "Which river is usually ranked the longest in the world?",
+      "answer": "Nile",
+      "options": ["Mississippi", "Yangtze", "Danube"],
+      "explanation": "The Nile (about 6,650 km) narrowly beats the Amazon in most measurements, though the ranking is debated."
+    },
+    {
+      "id": "q-highest-mountain",
+      "type": "quiz",
+      "question": "Mount Everest sits on the border of Nepal and which other country?",
+      "answer": "China",
+      "options": ["India", "Bhutan", "Pakistan"]
+    },
+    {
+      "id": "q-smallest-country",
+      "type": "quiz",
+      "question": "What is the smallest country in the world by area?",
+      "answer": "Vatican City",
+      "options": ["Monaco", "San Marino", "Liechtenstein"],
+      "explanation": "Vatican City covers about 0.44 km²."
+    },
+    {
+      "id": "q-continents-africa",
+      "type": "quiz",
+      "question": "Which continent has the most countries?",
+      "answer": "Africa",
+      "options": ["Asia", "Europe", "South America"],
+      "explanation": "Africa has 54 UN-recognised countries."
+    },
+    {
+      "id": "q-driest",
+      "type": "quiz",
+      "question": "The Atacama, one of the driest places on Earth, is mainly in which country?",
+      "answer": "Chile",
+      "options": ["Peru", "Egypt", "Australia"]
+    },
+    {
+      "id": "m-sahara-largest",
+      "type": "myth",
+      "statement": "The Sahara is the largest desert in the world.",
+      "isFact": false,
+      "explanation": "Antarctica is larger. The Sahara is the largest hot desert."
+    },
+    {
+      "id": "m-australia-wider",
+      "type": "myth",
+      "statement": "Australia is wider than the Moon.",
+      "isFact": true,
+      "explanation": "Australia stretches about 4,000 km east to west; the Moon is about 3,474 km across."
+    },
+    {
+      "id": "m-everest-tallest",
+      "type": "myth",
+      "statement": "Mount Everest is the tallest mountain when measured from base to peak.",
+      "isFact": false,
+      "explanation": "Everest has the highest summit above sea level, but Mauna Kea in Hawaii is taller from its base on the ocean floor (over 10,000 m)."
+    },
+    {
+      "id": "m-alaska-west-east",
+      "type": "myth",
+      "statement": "Alaska is the westernmost, northernmost and easternmost US state.",
+      "isFact": true,
+      "explanation": "Its Aleutian Islands cross the 180° meridian, so some lie in the Eastern Hemisphere."
+    },
+    {
+      "id": "hl-mountains",
+      "type": "higher-lower",
+      "metric": "summit height",
+      "unit": "m",
+      "a": {
+        "label": "Mont Blanc",
+        "value": 4806,
+        "emoji": "🏔️"
+      },
+      "b": {
+        "label": "Kilimanjaro",
+        "value": 5895,
+        "emoji": "⛰️"
+      }
+    },
+    {
+      "id": "hl-oceans",
+      "type": "higher-lower",
+      "metric": "area",
+      "unit": "million km²",
+      "a": {
+        "label": "Atlantic Ocean",
+        "value": 106.5,
+        "emoji": "🌊"
+      },
+      "b": {
+        "label": "Indian Ocean",
+        "value": 70.6,
+        "emoji": "🌊"
+      }
+    },
+    {
+      "id": "hl-cities",
+      "type": "higher-lower",
+      "metric": "elevation",
+      "unit": "m",
+      "a": {
+        "label": "Quito",
+        "value": 2850,
+        "emoji": "🇪🇨"
+      },
+      "b": {
+        "label": "La Paz",
+        "value": 3640,
+        "emoji": "🇧🇴"
+      },
+      "explanation": "La Paz is the highest seat of government in the world."
+    }
+  ]
+}

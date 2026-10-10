@@ -1,0 +1,143 @@
+{
+  "id": "history",
+  "title": "History highlights",
+  "category": "history",
+  "cards": [
+    {
+      "id": "cleopatra-time",
+      "type": "fact",
+      "emoji": "🏺",
+      "title": "Ancient is relative",
+      "text": "Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid of Giza. The pyramid was about 2,500 years old by her lifetime."
+    },
+    {
+      "id": "oxford-aztec",
+      "type": "fact",
+      "emoji": "🎓",
+      "title": "Older than empires",
+      "text": "The University of Oxford was already teaching students by 1096, more than two centuries before the Aztec city of Tenochtitlan was founded in 1325."
+    },
+    {
+      "id": "printing-press",
+      "type": "fact",
+      "emoji": "📜",
+      "title": "Movable type",
+      "text": "Johannes Gutenberg's printing press, developed around 1440 in Mainz, helped make books cheap enough to spread literacy across Europe."
+    },
+    {
+      "id": "shortest-war",
+      "type": "fact",
+      "emoji": "⏱️",
+      "title": "The shortest war",
+      "text": "The Anglo-Zanzibar War of 1896 is often called the shortest war in recorded history: it lasted roughly 40 minutes."
+    },
+    {
+      "id": "q-berlin-wall",
+      "type": "quiz",
+      "question": "In which year did the Berlin Wall fall?",
+      "answer": "1989",
+      "options": ["1961", "1991", "1979"],
+      "explanation": "The border opened on 9 November 1989; Germany reunified in October 1990."
+    },
+    {
+      "id": "q-magna-carta",
+      "type": "quiz",
+      "question": "The Magna Carta was sealed in 1215 by which English king?",
+      "answer": "King John",
+      "options": ["Henry VIII", "Richard the Lionheart", "William the Conqueror"]
+    },
+    {
+      "id": "q-first-emperor",
+      "type": "quiz",
+      "question": "Who was the first emperor of a unified China?",
+      "answer": "Qin Shi Huang",
+      "options": ["Kublai Khan", "Emperor Wu of Han", "Sun Yat-sen"],
+      "explanation": "He unified China in 221 BCE; he is also known for the Terracotta Army."
+    },
+    {
+      "id": "q-moon-landing",
+      "type": "quiz",
+      "question": "Which mission first landed humans on the Moon?",
+      "answer": "Apollo 11",
+      "options": ["Apollo 13", "Gemini 4", "Apollo 8"],
+      "explanation": "Neil Armstrong and Buzz Aldrin landed on 20 July 1969."
+    },
+    {
+      "id": "q-roman-numerals",
+      "type": "quiz",
+      "question": "What is MCMXC in Roman numerals?",
+      "answer": "1990",
+      "options": ["1940", "2090", "1890"],
+      "explanation": "M (1000) + CM (900) + XC (90) = 1990."
+    },
+    {
+      "id": "m-viking-horns",
+      "type": "myth",
+      "statement": "Viking warriors wore horned helmets into battle.",
+      "isFact": false,
+      "explanation": "No horned Viking battle helmet has ever been found. The image comes largely from 19th-century costume designs for Wagner's operas."
+    },
+    {
+      "id": "m-napoleon-short",
+      "type": "myth",
+      "statement": "Napoleon Bonaparte was unusually short.",
+      "isFact": false,
+      "explanation": "He was about 1.69 m (5 ft 7 in), average or slightly above for a Frenchman of his time. Confusion between French and English inches helped the myth."
+    },
+    {
+      "id": "m-flat-earth-columbus",
+      "type": "myth",
+      "statement": "Educated Europeans in Columbus's time believed the Earth was flat.",
+      "isFact": false,
+      "explanation": "Scholars had known the Earth was round since ancient Greece; the debate was about its size."
+    },
+    {
+      "id": "m-hundred-years",
+      "type": "myth",
+      "statement": "The Hundred Years' War lasted exactly 100 years.",
+      "isFact": false,
+      "explanation": "It ran from 1337 to 1453: 116 years, with long truces in between."
+    },
+    {
+      "id": "m-pyramids-slaves",
+      "type": "myth",
+      "statement": "Egypt's great pyramids were built mainly by enslaved people.",
+      "isFact": false,
+      "explanation": "Archaeological evidence from workers' villages suggests paid, organised labourers who were fed and given medical care."
+    },
+    {
+      "id": "hl-monuments",
+      "type": "higher-lower",
+      "metric": "height",
+      "unit": "m",
+      "a": {
+        "label": "Great Pyramid of Giza (as built)",
+        "value": 146.6,
+        "emoji": "🔺"
+      },
+      "b": {
+        "label": "Statue of Liberty (with pedestal)",
+        "value": 93,
+        "emoji": "🗽"
+      },
+      "explanation": "The Great Pyramid was the tallest human-made structure for nearly 4,000 years."
+    },
+    {
+      "id": "hl-ww",
+      "type": "higher-lower",
+      "metric": "duration",
+      "unit": "years",
+      "a": {
+        "label": "World War I",
+        "value": 4.3,
+        "emoji": "🪖"
+      },
+      "b": {
+        "label": "World War II",
+        "value": 6,
+        "emoji": "✈️"
+      },
+      "explanation": "WWI ran July 1914–November 1918; WWII September 1939–September 1945."
+    }
+  ]
+}

@@ -1,0 +1,96 @@
+{
+  "id": "sports",
+  "title": "Sports",
+  "category": "sports",
+  "cards": [
+    {
+      "id": "marathon-distance",
+      "type": "fact",
+      "emoji": "🏃",
+      "title": "26.2 miles",
+      "text": "The marathon was standardised at 42.195 km after the 1908 London Olympics, where the course reportedly ran from Windsor Castle to the royal box in the stadium."
+    },
+    {
+      "id": "golf-moon",
+      "type": "fact",
+      "emoji": "⛳",
+      "title": "Golf on the Moon",
+      "text": "In 1971 Apollo 14 astronaut Alan Shepard hit two golf balls on the Moon using a makeshift club."
+    },
+    {
+      "id": "q-olympic-rings",
+      "type": "quiz",
+      "question": "How many rings are on the Olympic flag?",
+      "answer": "5",
+      "options": ["4", "6", "7"]
+    },
+    {
+      "id": "q-world-cup-first",
+      "type": "quiz",
+      "question": "Which country hosted (and won) the first FIFA World Cup in 1930?",
+      "answer": "Uruguay",
+      "options": ["Brazil", "Italy", "France"]
+    },
+    {
+      "id": "q-tennis-love",
+      "type": "quiz",
+      "question": "In tennis, what does a score of 'love' mean?",
+      "answer": "Zero",
+      "options": ["A tie", "Game point", "A serve that hits the net"]
+    },
+    {
+      "id": "q-basketball-inventor",
+      "type": "quiz",
+      "question": "Basketball was invented in 1891 by…",
+      "answer": "James Naismith",
+      "options": ["Michael Jordan", "Abner Doubleday", "William Morgan"],
+      "explanation": "Naismith, a Canadian PE teacher, invented it at a YMCA school in Springfield, Massachusetts."
+    },
+    {
+      "id": "m-golf-balls-dimples",
+      "type": "myth",
+      "statement": "The dimples on a golf ball help it fly farther.",
+      "isFact": true,
+      "explanation": "Dimples create a thin turbulent layer that reduces drag; a smooth ball would travel much shorter."
+    },
+    {
+      "id": "m-marathon-original",
+      "type": "myth",
+      "statement": "The marathon distance has been 42.195 km since the ancient Greek Olympics.",
+      "isFact": false,
+      "explanation": "There was no marathon race in the ancient Olympics; the distance was fixed after the 1908 London Games."
+    },
+    {
+      "id": "hl-pitches",
+      "type": "higher-lower",
+      "metric": "length of the playing area",
+      "unit": "m",
+      "a": {
+        "label": "Basketball court (NBA)",
+        "value": 28.65,
+        "emoji": "🏀"
+      },
+      "b": {
+        "label": "Tennis court",
+        "value": 23.77,
+        "emoji": "🎾"
+      }
+    },
+    {
+      "id": "hl-balls",
+      "type": "higher-lower",
+      "metric": "typical ball weight",
+      "unit": "g",
+      "a": {
+        "label": "Football (soccer)",
+        "value": 430,
+        "emoji": "⚽"
+      },
+      "b": {
+        "label": "Basketball",
+        "value": 600,
+        "emoji": "🏀"
+      }
+    }
+  ]
+}

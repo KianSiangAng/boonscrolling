@@ -1,0 +1,180 @@
+{
+  "id": "science",
+  "title": "Science essentials",
+  "category": "science",
+  "cards": [
+    {
+      "id": "light-sun",
+      "type": "fact",
+      "emoji": "☀️",
+      "title": "Old sunlight",
+      "text": "Sunlight takes about 8 minutes and 20 seconds to reach Earth, so you always see the Sun as it was a little over 8 minutes ago."
+    },
+    {
+      "id": "water-expands",
+      "type": "fact",
+      "emoji": "🧊",
+      "title": "Why ice floats",
+      "text": "Water expands by about 9% when it freezes. That makes ice less dense than liquid water, so lakes freeze from the top down and fish survive the winter underneath."
+    },
+    {
+      "id": "dna-length",
+      "type": "fact",
+      "emoji": "🧬",
+      "title": "Packed DNA",
+      "text": "The DNA in a single human cell would stretch about 2 metres if uncoiled, yet it fits inside a nucleus only a few millionths of a metre across."
+    },
+    {
+      "id": "venus-day",
+      "type": "fact",
+      "emoji": "🪐",
+      "title": "A very long day",
+      "text": "Venus spins so slowly that one rotation (243 Earth days) takes longer than its orbit around the Sun (about 225 Earth days). It also spins backwards compared with most planets."
+    },
+    {
+      "id": "neutron-star",
+      "type": "fact",
+      "emoji": "✨",
+      "title": "Heavy stuff",
+      "text": "Neutron stars are so dense that a teaspoon of their material would weigh billions of tonnes on Earth."
+    },
+    {
+      "id": "q-symbol-gold",
+      "type": "quiz",
+      "question": "What is the chemical symbol for gold?",
+      "answer": "Au",
+      "options": ["Ag", "Gd", "Go"],
+      "explanation": "Au comes from the Latin word for gold, aurum. Ag (silver) comes from argentum."
+    },
+    {
+      "id": "q-planet-largest",
+      "type": "quiz",
+      "question": "Which is the largest planet in our solar system?",
+      "answer": "Jupiter",
+      "options": ["Saturn", "Neptune", "Earth"],
+      "explanation": "Jupiter's mass is more than twice that of all the other planets combined."
+    },
+    {
+      "id": "q-speed-sound",
+      "type": "quiz",
+      "question": "Roughly how fast does sound travel through air at room temperature?",
+      "answer": "343 m/s",
+      "options": ["34 m/s", "3,430 m/s", "300,000 km/s"],
+      "explanation": "About 343 m/s at 20 °C. 300,000 km/s is the speed of light."
+    },
+    {
+      "id": "q-powerhouse",
+      "type": "quiz",
+      "question": "Which part of a cell produces most of its chemical energy (ATP)?",
+      "answer": "Mitochondria",
+      "options": ["Ribosomes", "Nucleus", "Golgi apparatus"]
+    },
+    {
+      "id": "q-noble-gas",
+      "type": "quiz",
+      "question": "Which of these is a noble gas?",
+      "answer": "Argon",
+      "options": ["Nitrogen", "Chlorine", "Hydrogen"],
+      "explanation": "Argon makes up almost 1% of Earth's atmosphere."
+    },
+    {
+      "id": "q-hardest-natural",
+      "type": "quiz",
+      "question": "Which natural material scores 10, the top of the Mohs hardness scale?",
+      "answer": "Diamond",
+      "options": ["Quartz", "Topaz", "Corundum"]
+    },
+    {
+      "id": "m-brain-10",
+      "type": "myth",
+      "statement": "Humans only use 10% of their brains.",
+      "isFact": false,
+      "explanation": "Brain imaging shows activity across virtually the whole brain over the course of a day; there is no idle 90%."
+    },
+    {
+      "id": "m-lightning-twice",
+      "type": "myth",
+      "statement": "Lightning never strikes the same place twice.",
+      "isFact": false,
+      "explanation": "Tall structures get struck repeatedly. The Empire State Building is hit around 20–25 times a year."
+    },
+    {
+      "id": "m-great-wall-space",
+      "type": "myth",
+      "statement": "The Great Wall of China is visible from the Moon with the naked eye.",
+      "isFact": false,
+      "explanation": "It is far too narrow. Astronauts report it is hard to spot even from low Earth orbit."
+    },
+    {
+      "id": "m-diamond-carbon",
+      "type": "myth",
+      "statement": "Diamonds and pencil graphite are made of the same element.",
+      "isFact": true,
+      "explanation": "Both are pure carbon; only the arrangement of the atoms differs."
+    },
+    {
+      "id": "m-glass-liquid",
+      "type": "myth",
+      "statement": "Old church windows are thicker at the bottom because glass slowly flows like a liquid.",
+      "isFact": false,
+      "explanation": "Glass is an amorphous solid and does not flow measurably over centuries; old panes were simply uneven when made."
+    },
+    {
+      "id": "m-sound-space",
+      "type": "myth",
+      "statement": "Sound cannot travel through the vacuum of space.",
+      "isFact": true,
+      "explanation": "Sound needs a medium such as air or water to carry its vibrations."
+    },
+    {
+      "id": "hl-planets-moons",
+      "type": "higher-lower",
+      "metric": "diameter",
+      "unit": "km",
+      "a": {
+        "label": "Earth",
+        "value": 12742,
+        "emoji": "🌍"
+      },
+      "b": {
+        "label": "Mars",
+        "value": 6779,
+        "emoji": "🔴"
+      },
+      "explanation": "Mars is roughly half Earth's width."
+    },
+    {
+      "id": "hl-boil-melt",
+      "type": "higher-lower",
+      "metric": "melting point",
+      "unit": "°C",
+      "a": {
+        "label": "Iron",
+        "value": 1538,
+        "emoji": "⚙️"
+      },
+      "b": {
+        "label": "Tungsten",
+        "value": 3422,
+        "emoji": "💡"
+      },
+      "explanation": "Tungsten has the highest melting point of any metal, which is why it was used in light-bulb filaments."
+    },
+    {
+      "id": "hl-sun-moon",
+      "type": "higher-lower",
+      "metric": "average distance from the Sun",
+      "unit": "million km",
+      "a": {
+        "label": "Mercury",
+        "value": 57.9,
+        "emoji": "☿️"
+      },
+      "b": {
+        "label": "Venus",
+        "value": 108.2,
+        "emoji": "♀️"
+      }
+    }
+  ]
+}

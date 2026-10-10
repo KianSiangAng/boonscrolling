@@ -1,0 +1,127 @@
+{
+  "id": "culture",
+  "title": "Arts, words & play",
+  "category": "arts",
+  "cards": [
+    {
+      "id": "mona-lisa-size",
+      "type": "fact",
+      "emoji": "🖼️",
+      "title": "Smaller than you think",
+      "text": "The Mona Lisa is only about 77 × 53 cm. Leonardo da Vinci worked on it for years and kept it with him until his death."
+    },
+    {
+      "id": "shakespeare-words",
+      "type": "fact",
+      "emoji": "🪶",
+      "title": "Word maker",
+      "text": "Shakespeare's works contain the earliest recorded uses of many English words and phrases, such as 'eyeball', 'swagger' and 'wild-goose chase'."
+    },
+    {
+      "id": "beethoven-deaf",
+      "type": "fact",
+      "emoji": "🎼",
+      "title": "Composing in silence",
+      "text": "Beethoven was almost completely deaf when he composed his Ninth Symphony, first performed in 1824."
+    },
+    {
+      "id": "q-starry-night",
+      "type": "quiz",
+      "question": "Who painted 'The Starry Night'?",
+      "answer": "Vincent van Gogh",
+      "options": ["Claude Monet", "Pablo Picasso", "Salvador Dalí"],
+      "explanation": "He painted it in 1889 from his window at an asylum in Saint-Rémy-de-Provence."
+    },
+    {
+      "id": "q-orwell",
+      "type": "quiz",
+      "question": "Which novel introduced the phrase 'Big Brother is watching you'?",
+      "answer": "Nineteen Eighty-Four",
+      "options": ["Brave New World", "Fahrenheit 451", "Animal Farm"]
+    },
+    {
+      "id": "q-sistine",
+      "type": "quiz",
+      "question": "Who painted the ceiling of the Sistine Chapel?",
+      "answer": "Michelangelo",
+      "options": ["Raphael", "Leonardo da Vinci", "Botticelli"]
+    },
+    {
+      "id": "q-haiku",
+      "type": "quiz",
+      "question": "A traditional haiku has how many syllables in total?",
+      "answer": "17",
+      "options": ["14", "12", "21"],
+      "explanation": "Three lines of 5, 7 and 5 syllables."
+    },
+    {
+      "id": "m-frankenstein",
+      "type": "myth",
+      "statement": "In Mary Shelley's novel, Frankenstein is the name of the monster.",
+      "isFact": false,
+      "explanation": "Victor Frankenstein is the scientist. The creature is never given a name."
+    },
+    {
+      "id": "m-van-gogh-sold",
+      "type": "myth",
+      "statement": "Van Gogh is widely said to have sold only one painting in his lifetime.",
+      "isFact": true,
+      "explanation": "'The Red Vineyard' is the only sale firmly documented, although he did trade and sell a few other works."
+    },
+    {
+      "id": "m-sherlock-elementary",
+      "type": "myth",
+      "statement": "Sherlock Holmes says 'Elementary, my dear Watson' in Arthur Conan Doyle's stories.",
+      "isFact": false,
+      "explanation": "The exact phrase never appears in the original stories; it was popularised later by films."
+    },
+    {
+      "id": "hl-books",
+      "type": "higher-lower",
+      "metric": "word count (approx.)",
+      "format": "compact",
+      "a": {
+        "label": "The Hobbit",
+        "value": 95000,
+        "emoji": "💍"
+      },
+      "b": {
+        "label": "War and Peace",
+        "value": 587000,
+        "emoji": "📚"
+      }
+    },
+    {
+      "id": "ent-toy-story",
+      "type": "fact",
+      "category": "entertainment",
+      "emoji": "🎬",
+      "title": "A first for film",
+      "text": "Toy Story (1995) was the first feature-length film made entirely with computer animation."
+    },
+    {
+      "id": "ent-q-beatles",
+      "type": "quiz",
+      "category": "entertainment",
+      "question": "Which city did the Beatles come from?",
+      "answer": "Liverpool",
+      "options": ["London", "Manchester", "Birmingham"]
+    },
+    {
+      "id": "ent-m-tetris",
+      "type": "myth",
+      "category": "entertainment",
+      "statement": "Tetris was created in the Soviet Union.",
+      "isFact": true,
+      "explanation": "Alexey Pajitnov created it in 1984 at the Soviet Academy of Sciences in Moscow."
+    },
+    {
+      "id": "ent-q-chess",
+      "type": "quiz",
+      "category": "entertainment",
+      "question": "In chess, which piece can only move diagonally?",
+      "answer": "Bishop",
+      "options": ["Rook", "Knight", "King"]
+    }
+  ]
+}

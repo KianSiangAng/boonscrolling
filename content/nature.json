@@ -1,0 +1,172 @@
+{
+  "id": "nature",
+  "title": "Wild world",
+  "category": "nature",
+  "cards": [
+    {
+      "id": "octopus-hearts",
+      "type": "fact",
+      "emoji": "🐙",
+      "title": "Three hearts",
+      "text": "An octopus has three hearts: two pump blood through the gills and one pumps it around the body. Its blood is blue because it uses copper-based haemocyanin to carry oxygen."
+    },
+    {
+      "id": "tardigrades",
+      "type": "fact",
+      "emoji": "🦠",
+      "title": "Nearly indestructible",
+      "text": "Tardigrades, or water bears, can survive drying out for years, extreme cold and even exposure to the vacuum of space by entering a dormant state."
+    },
+    {
+      "id": "bamboo-growth",
+      "type": "fact",
+      "emoji": "🎋",
+      "title": "Fast grower",
+      "text": "Some bamboo species can grow close to a metre in a single day, making them among the fastest-growing plants on Earth."
+    },
+    {
+      "id": "blue-whale",
+      "type": "fact",
+      "emoji": "🐋",
+      "title": "Biggest ever",
+      "text": "The blue whale is the largest animal known to have ever lived, reaching around 30 metres long. Its heart alone is about the size of a small car."
+    },
+    {
+      "id": "trees-oxygen",
+      "type": "fact",
+      "emoji": "🌊",
+      "title": "Ocean breath",
+      "text": "Roughly half of the oxygen produced on Earth comes from the ocean, mostly from tiny photosynthesising plankton."
+    },
+    {
+      "id": "q-fastest-land",
+      "type": "quiz",
+      "question": "What is the fastest land animal?",
+      "answer": "Cheetah",
+      "options": ["Pronghorn", "Lion", "Greyhound"],
+      "explanation": "Cheetahs can sprint at around 100–110 km/h in short bursts."
+    },
+    {
+      "id": "q-mammal-eggs",
+      "type": "quiz",
+      "question": "Which of these mammals lays eggs?",
+      "answer": "Platypus",
+      "options": ["Kangaroo", "Koala", "Bat"],
+      "explanation": "Platypuses and echidnas, the monotremes, are the only egg-laying mammals."
+    },
+    {
+      "id": "q-bee-dance",
+      "type": "quiz",
+      "question": "How do honeybees tell each other where flowers are?",
+      "answer": "The waggle dance",
+      "options": ["Ultrasonic buzzing", "Scent trails on the ground", "Changing colour"]
+    },
+    {
+      "id": "q-largest-desert",
+      "type": "quiz",
+      "question": "What is the largest desert on Earth?",
+      "answer": "Antarctica",
+      "options": ["Sahara", "Gobi", "Arabian Desert"],
+      "explanation": "A desert is defined by low precipitation, not heat. Antarctica is the largest; the Sahara is the largest hot desert."
+    },
+    {
+      "id": "q-spider-legs",
+      "type": "quiz",
+      "question": "How many legs does a spider have?",
+      "answer": "8",
+      "options": ["6", "10", "12"]
+    },
+    {
+      "id": "m-goldfish-memory",
+      "type": "myth",
+      "statement": "Goldfish have a memory span of only three seconds.",
+      "isFact": false,
+      "explanation": "Experiments show goldfish can remember things for months and can be trained to respond to sounds and colours."
+    },
+    {
+      "id": "m-bats-blind",
+      "type": "myth",
+      "statement": "Bats are blind.",
+      "isFact": false,
+      "explanation": "All bats can see. Many also use echolocation, and some fruit bats have excellent vision."
+    },
+    {
+      "id": "m-ostrich-sand",
+      "type": "myth",
+      "statement": "Ostriches bury their heads in the sand when scared.",
+      "isFact": false,
+      "explanation": "They lower their heads to turn their eggs in ground nests or lie flat to hide, which may look like burying from afar."
+    },
+    {
+      "id": "m-sharks-older-trees",
+      "type": "myth",
+      "statement": "Sharks have existed for longer than trees.",
+      "isFact": true,
+      "explanation": "Sharks appear in the fossil record around 400+ million years ago; the first trees appeared around 385 million years ago."
+    },
+    {
+      "id": "m-chameleon",
+      "type": "myth",
+      "statement": "Chameleons change colour mainly to blend in with their surroundings.",
+      "isFact": false,
+      "explanation": "Colour change is mostly about communication, mood and temperature control rather than camouflage."
+    },
+    {
+      "id": "m-koala-sleep",
+      "type": "myth",
+      "statement": "Koalas can sleep up to 20 hours a day.",
+      "isFact": true,
+      "explanation": "Their eucalyptus diet is low in energy, so they rest most of the day."
+    },
+    {
+      "id": "hl-lifespan",
+      "type": "higher-lower",
+      "metric": "maximum recorded lifespan",
+      "unit": "years",
+      "a": {
+        "label": "Galápagos tortoise",
+        "value": 175,
+        "emoji": "🐢"
+      },
+      "b": {
+        "label": "Bowhead whale",
+        "value": 211,
+        "emoji": "🐋"
+      },
+      "explanation": "Bowhead whales are among the longest-lived mammals."
+    },
+    {
+      "id": "hl-speed",
+      "type": "higher-lower",
+      "metric": "top speed",
+      "unit": "km/h",
+      "a": {
+        "label": "Cheetah",
+        "value": 110,
+        "emoji": "🐆"
+      },
+      "b": {
+        "label": "Peregrine falcon (diving)",
+        "value": 320,
+        "emoji": "🦅"
+      },
+      "explanation": "In a hunting stoop, the peregrine falcon is the fastest animal on Earth."
+    },
+    {
+      "id": "hl-weight",
+      "type": "higher-lower",
+      "metric": "typical adult weight",
+      "unit": "kg",
+      "a": {
+        "label": "African elephant",
+        "value": 6000,
+        "emoji": "🐘"
+      },
+      "b": {
+        "label": "Hippopotamus",
+        "value": 1500,
+        "emoji": "🦛"
+      }
+    }
+  ]
+}

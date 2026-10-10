@@ -1,0 +1,100 @@
+{
+  "id": "general",
+  "title": "Everyday wonders",
+  "category": "general",
+  "cards": [
+    {
+      "id": "honey-spoils",
+      "type": "fact",
+      "emoji": "🍯",
+      "title": "Honey keeps",
+      "text": "Properly sealed honey can last for centuries: its low water content and acidity make it hostile to microbes. Edible honey has been reported in ancient Egyptian tombs."
+    },
+    {
+      "id": "qwerty",
+      "type": "fact",
+      "emoji": "⌨️",
+      "title": "QWERTY",
+      "text": "The QWERTY keyboard layout was designed for 1870s typewriters and has stuck around ever since, despite many proposed alternatives."
+    },
+    {
+      "id": "bananas-berries",
+      "type": "fact",
+      "emoji": "🍌",
+      "title": "Botany is weird",
+      "text": "Botanically, bananas are berries, while strawberries are not: a strawberry's 'seeds' are actually tiny individual fruits."
+    },
+    {
+      "id": "q-largest-organ",
+      "type": "quiz",
+      "question": "What is the largest organ of the human body?",
+      "answer": "Skin",
+      "options": ["Liver", "Brain", "Lungs"]
+    },
+    {
+      "id": "q-days-leap",
+      "type": "quiz",
+      "question": "How many days are in a leap year?",
+      "answer": "366",
+      "options": ["365", "364", "367"]
+    },
+    {
+      "id": "q-primary-colours",
+      "type": "quiz",
+      "question": "What are the additive primary colours of light used by screens?",
+      "answer": "Red, green, blue",
+      "options": ["Red, yellow, blue", "Cyan, magenta, yellow", "Red, green, yellow"]
+    },
+    {
+      "id": "m-sugar-hyper",
+      "type": "myth",
+      "statement": "Eating sugar makes children hyperactive.",
+      "isFact": false,
+      "explanation": "Controlled double-blind studies have found no effect of sugar on children's behaviour; expectations shape what parents see."
+    },
+    {
+      "id": "m-cracking-knuckles",
+      "type": "myth",
+      "statement": "Cracking your knuckles causes arthritis.",
+      "isFact": false,
+      "explanation": "Studies, including one doctor's 60-year experiment on one hand, found no link to arthritis."
+    },
+    {
+      "id": "m-tongue-map",
+      "type": "myth",
+      "statement": "Different parts of the tongue detect different tastes.",
+      "isFact": false,
+      "explanation": "The 'tongue map' came from a misreading of a 1901 paper; all taste areas sense all basic tastes."
+    },
+    {
+      "id": "m-hair-after-death",
+      "type": "myth",
+      "statement": "Hair and nails keep growing after death.",
+      "isFact": false,
+      "explanation": "The skin dehydrates and retracts, which makes hair and nails look longer."
+    },
+    {
+      "id": "m-bulls-red",
+      "type": "myth",
+      "statement": "Bulls are enraged by the colour red.",
+      "isFact": false,
+      "explanation": "Cattle are red–green colour-blind; bulls react to the movement of the cape."
+    },
+    {
+      "id": "hl-calories",
+      "type": "higher-lower",
+      "metric": "calories per 100 g",
+      "unit": "kcal",
+      "a": {
+        "label": "Avocado",
+        "value": 160,
+        "emoji": "🥑"
+      },
+      "b": {
+        "label": "Banana",
+        "value": 89,
+        "emoji": "🍌"
+      }
+    }
+  ]
+}
