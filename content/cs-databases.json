@@ -1,0 +1,160 @@
+{
+  "id": "cs-databases",
+  "title": "Databases & SQL",
+  "category": "computing",
+  "topic": "cs-databases",
+  "cards": [
+    {
+      "id": "codd-sql",
+      "type": "fact",
+      "emoji": "📜",
+      "title": "Where SQL came from",
+      "text": "Edgar F. Codd described the relational model at IBM in 1970. IBM researchers then built SEQUEL, later renamed SQL, to query it."
+    },
+    {
+      "id": "acid",
+      "type": "fact",
+      "emoji": "🧪",
+      "title": "ACID",
+      "text": "Transactions in relational databases aim to be ACID: Atomic (all or nothing), Consistent (rules hold), Isolated (no interference from concurrent transactions) and Durable (committed data survives crashes)."
+    },
+    {
+      "id": "index-tradeoff",
+      "type": "fact",
+      "emoji": "📇",
+      "title": "Indexes aren't free",
+      "text": "An index speeds up reads, but every INSERT, UPDATE and DELETE must also update the index, so writes get slower and storage grows."
+    },
+    {
+      "id": "having",
+      "type": "quiz",
+      "question": "Which SQL clause filters groups after aggregation?",
+      "answer": "HAVING",
+      "options": ["WHERE", "ORDER BY", "LIMIT"],
+      "explanation": "WHERE filters rows before grouping; HAVING filters the groups afterwards."
+    },
+    {
+      "id": "inner-join",
+      "type": "quiz",
+      "question": "Which JOIN returns only rows that have a match in both tables?",
+      "answer": "INNER JOIN",
+      "options": ["LEFT JOIN", "FULL OUTER JOIN", "CROSS JOIN"]
+    },
+    {
+      "id": "primary-key",
+      "type": "quiz",
+      "question": "What does a primary key guarantee?",
+      "answer": "Every row has a unique, non-null key",
+      "options": ["Rows are stored in insertion order", "The column is encrypted", "The table can't be dropped"]
+    },
+    {
+      "id": "1nf",
+      "type": "quiz",
+      "question": "Which normal form requires every column to hold a single, atomic value?",
+      "answer": "First normal form (1NF)",
+      "options": ["Second normal form (2NF)", "Third normal form (3NF)", "Boyce–Codd normal form"]
+    },
+    {
+      "id": "isolation",
+      "type": "quiz",
+      "question": "The “I” in ACID protects against…",
+      "answer": "concurrent transactions interfering",
+      "options": ["disk failures", "invalid data types", "slow queries"]
+    },
+    {
+      "id": "null-equals",
+      "type": "myth",
+      "statement": "In SQL, NULL = NULL evaluates to true.",
+      "isFact": false,
+      "explanation": "Comparing with NULL gives NULL (unknown). Use IS NULL to test for it."
+    },
+    {
+      "id": "index-insert",
+      "type": "myth",
+      "statement": "Adding an index to a table can make INSERTs slower.",
+      "isFact": true,
+      "explanation": "Each insert must also add an entry to every index on the table."
+    },
+    {
+      "id": "nosql-tx",
+      "type": "myth",
+      "statement": "NoSQL databases can't support transactions.",
+      "isFact": false,
+      "explanation": "Many do: MongoDB, for example, has supported multi-document ACID transactions since version 4.0."
+    },
+    {
+      "id": "count-null",
+      "type": "code-output",
+      "lang": "sql",
+      "code": ["CREATE TABLE t (x INT);", "INSERT INTO t VALUES (1), (2), (NULL);", "SELECT COUNT(x) FROM t;"],
+      "answer": "2",
+      "options": ["3", "NULL", "0"],
+      "explanation": "COUNT(column) skips NULLs; COUNT(*) would return 3."
+    },
+    {
+      "id": "null-compare",
+      "type": "code-output",
+      "lang": "sql",
+      "code": ["SELECT NULL = NULL;"],
+      "answer": "NULL",
+      "options": ["1", "0", "TRUE"],
+      "explanation": "Any comparison with NULL is unknown, so the result is NULL, not true."
+    },
+    {
+      "id": "group-by",
+      "type": "code-output",
+      "lang": "sql",
+      "code": [
+        "CREATE TABLE s (dept TEXT, pay INT);",
+        "INSERT INTO s VALUES ('a', 10),",
+        "  ('a', 20), ('b', 5);",
+        "SELECT dept, SUM(pay) FROM s",
+        "GROUP BY dept ORDER BY dept;"
+      ],
+      "answer": "a, 30\nb, 5",
+      "options": ["a, 20\nb, 5", "a, 10\na, 20\nb, 5", "a, 35"],
+      "explanation": "GROUP BY collapses the rows for each dept into one, and SUM adds their pay."
+    },
+    {
+      "id": "left-join",
+      "type": "code-output",
+      "lang": "sql",
+      "code": [
+        "CREATE TABLE a (id INT);",
+        "CREATE TABLE b (id INT);",
+        "INSERT INTO a VALUES (1), (2), (3);",
+        "INSERT INTO b VALUES (2), (2);",
+        "SELECT COUNT(*) FROM a",
+        "LEFT JOIN b ON a.id = b.id;"
+      ],
+      "answer": "4",
+      "options": ["3", "2", "5"],
+      "explanation": "Rows 1 and 3 have no match and appear once each; row 2 matches twice, giving 1 + 2 + 1 = 4."
+    },
+    {
+      "id": "bigo-btree",
+      "type": "big-o",
+      "prompt": "Finding a row by key with a B-tree index",
+      "answer": "O(log n)",
+      "explanation": "A B-tree is balanced, so a lookup walks one path from root to leaf."
+    },
+    {
+      "id": "bigo-scan",
+      "type": "big-o",
+      "prompt": "Filtering on an unindexed column (full table scan)",
+      "answer": "O(n)",
+      "explanation": "Without an index the database must read every row."
+    },
+    {
+      "id": "match-indexes",
+      "type": "ds-match",
+      "prompt": "Match each storage structure to what it's best at",
+      "pairs": [
+        ["B-tree index", "Range queries like BETWEEN"],
+        ["Hash index", "Exact-match lookups"],
+        ["Bitmap index", "Low-cardinality columns"],
+        ["LSM tree", "Write-heavy workloads"]
+      ]
+    }
+  ]
+}

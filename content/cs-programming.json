@@ -1,0 +1,230 @@
+{
+  "id": "cs-programming",
+  "title": "Code reading & regex",
+  "category": "computing",
+  "topic": "cs-programming",
+  "cards": [
+    {
+      "id": "coercion",
+      "type": "code-output",
+      "lang": "js",
+      "code": ["console.log(\"5\" + 3, \"5\" - 3);"],
+      "answer": "53 2",
+      "options": ["8 2", "53 NaN", "8 8"],
+      "explanation": "+ with a string concatenates; - only works on numbers, so \"5\" is converted."
+    },
+    {
+      "id": "event-loop",
+      "type": "code-output",
+      "lang": "js",
+      "code": [
+        "setTimeout(() => console.log(\"A\"), 0);",
+        "Promise.resolve().then(() =>",
+        "  console.log(\"B\"));",
+        "console.log(\"C\");"
+      ],
+      "answer": "C\nB\nA",
+      "options": ["A\nB\nC", "C\nA\nB", "B\nC\nA"],
+      "explanation": "Synchronous code runs first, then microtasks (promise callbacks), then timers."
+    },
+    {
+      "id": "mutable-default",
+      "type": "code-output",
+      "lang": "python",
+      "code": ["def add(x, items=[]):", "    items.append(x)", "    return items", "", "add(1)", "print(add(2))"],
+      "answer": "[1, 2]",
+      "options": ["[2]", "[1]", "[2, 1]"],
+      "explanation": "The default list is created once, when the function is defined, and shared by every call."
+    },
+    {
+      "id": "slicing",
+      "type": "code-output",
+      "lang": "python",
+      "code": ["s = \"boonscrolling\"", "print(s[::-1][:4])"],
+      "answer": "gnil",
+      "options": ["boon", "ling", "noob"],
+      "explanation": "[::-1] reverses the string, then [:4] takes its first four characters."
+    },
+    {
+      "id": "closures",
+      "type": "code-output",
+      "lang": "js",
+      "code": [
+        "const fs = [];",
+        "for (var i = 0; i < 3; i++) {",
+        "  fs.push(() => i);",
+        "}",
+        "console.log(fs.map(f => f()).join());"
+      ],
+      "answer": "3,3,3",
+      "options": ["0,1,2", "1,2,3", "2,2,2"],
+      "explanation": "var is function-scoped, so every closure sees the same i, which is 3 after the loop. let would give 0,1,2."
+    },
+    {
+      "id": "aliasing",
+      "type": "code-output",
+      "lang": "python",
+      "code": ["a = [1, 2, 3]", "b = a", "b.append(4)", "print(len(a))"],
+      "answer": "4",
+      "options": ["3", "1", "Error"],
+      "explanation": "b = a copies the reference, not the list: both names point at the same object."
+    },
+    {
+      "id": "default-sort",
+      "type": "code-output",
+      "lang": "js",
+      "code": ["console.log([10, 9, 1].sort().join());"],
+      "answer": "1,10,9",
+      "options": ["1,9,10", "10,9,1", "9,10,1"],
+      "explanation": "Without a compare function, sort() compares values as strings."
+    },
+    {
+      "id": "max",
+      "type": "spot-the-bug",
+      "lang": "js",
+      "goal": "Return the largest number in a non-empty array.",
+      "code": [
+        "function max(a) {",
+        "  let best = 0;",
+        "  for (const x of a) {",
+        "    if (x > best) best = x;",
+        "  }",
+        "  return best;",
+        "}"
+      ],
+      "bugLine": 2,
+      "fix": "  let best = a[0];",
+      "checks": [
+        {
+          "call": "max([1, 7, 3])",
+          "expect": 7
+        },
+        {
+          "call": "max([-5, -2, -9])",
+          "expect": -2
+        }
+      ],
+      "explanation": "Starting at 0 breaks arrays where every number is negative. Start from the first element (or -Infinity)."
+    },
+    {
+      "id": "factorial",
+      "type": "spot-the-bug",
+      "lang": "python",
+      "goal": "Return n! (with 0! = 1).",
+      "code": ["def fact(n):", "    if n == 0:", "        return 0", "    return n * fact(n - 1)"],
+      "bugLine": 3,
+      "fix": "        return 1",
+      "checks": [
+        {
+          "call": "fact(5)",
+          "expect": 120
+        },
+        {
+          "call": "fact(0)",
+          "expect": 1
+        }
+      ],
+      "explanation": "The base case must be 1; returning 0 makes every product 0."
+    },
+    {
+      "id": "range",
+      "type": "spot-the-bug",
+      "lang": "js",
+      "goal": "Return [0, 1, …, n − 1].",
+      "code": [
+        "function range(n) {",
+        "  const out = [];",
+        "  for (let i = 0; i <= n; i++) {",
+        "    out.push(i);",
+        "  }",
+        "  return out;",
+        "}"
+      ],
+      "bugLine": 3,
+      "fix": "  for (let i = 0; i < n; i++) {",
+      "checks": [
+        {
+          "call": "range(3)",
+          "expect": [0, 1, 2]
+        },
+        {
+          "call": "range(0)",
+          "expect": []
+        }
+      ],
+      "explanation": "A classic off-by-one: <= runs the loop n + 1 times."
+    },
+    {
+      "id": "counts",
+      "type": "spot-the-bug",
+      "lang": "python",
+      "goal": "Count how many times each word appears.",
+      "code": ["def counts(words):", "    c = {}", "    for w in words:", "        c[w] = 1", "    return c"],
+      "bugLine": 4,
+      "fix": "        c[w] = c.get(w, 0) + 1",
+      "checks": [
+        {
+          "call": "counts([\"a\", \"b\", \"a\"])",
+          "expect": {
+            "a": 2,
+            "b": 1
+          }
+        },
+        {
+          "call": "counts([])",
+          "expect": {}
+        }
+      ],
+      "explanation": "Each repeat overwrites the count with 1 instead of adding to it."
+    },
+    {
+      "id": "lowercase",
+      "type": "regex-match",
+      "pattern": "^[a-z]+$",
+      "candidates": ["hello", "Hello", "hello world", "", "abc"],
+      "matches": ["hello", "abc"],
+      "explanation": "Only lowercase letters, at least one, from start to end: capitals, spaces and the empty string fail."
+    },
+    {
+      "id": "price",
+      "type": "regex-match",
+      "pattern": "^\\d+(\\.\\d{1,2})?$",
+      "candidates": ["10", "10.5", "10.555", ".5", "3.14"],
+      "matches": ["10", "10.5", "3.14"],
+      "explanation": "Digits before the point are required; the decimal part is optional but limited to 1–2 digits."
+    },
+    {
+      "id": "colour",
+      "type": "regex-match",
+      "pattern": "colou?r",
+      "candidates": ["color", "colour", "colouur", "colr", "Color"],
+      "matches": ["color", "colour"],
+      "explanation": "? makes the u optional (zero or one). Matching is case-sensitive without the i flag."
+    },
+    {
+      "id": "hex-colour",
+      "type": "regex-match",
+      "pattern": "^#[0-9a-f]{6}$",
+      "candidates": ["#FF8800", "#ff8800", "#f80", "FF8800", "#gg8800"],
+      "matches": ["#FF8800", "#ff8800"],
+      "flags": "i",
+      "explanation": "The i flag makes [0-9a-f] accept uppercase too; the 3-digit shorthand needs a different pattern."
+    },
+    {
+      "id": "word-boundary",
+      "type": "regex-match",
+      "pattern": "\\bcat\\b",
+      "candidates": ["cat", "concat", "the cat sat", "cats", "cat."],
+      "matches": ["cat", "the cat sat", "cat."],
+      "explanation": "\\b marks a boundary between a word character and a non-word character (or the string's edge)."
+    },
+    {
+      "id": "naive-ipv4",
+      "type": "regex-match",
+      "pattern": "^(\\d{1,3}\\.){3}\\d{1,3}$",
+      "candidates": ["192.168.0.1", "999.1.1.1", "1.2.3", "10.0.0.256", "a.b.c.d"],
+      "matches": ["192.168.0.1", "999.1.1.1", "10.0.0.256"],
+      "explanation": "This common pattern checks the shape, not the range: 999 and 256 aren't valid octets but still match."
+    }
+  ]
+}

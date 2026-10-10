@@ -28,6 +28,7 @@ const myth: CardModule<MythData> = {
         id: `myth:otdb:${q.id}`,
         type: 'myth',
         category: q.category,
+        ...(q.topic ? { topic: q.topic } : {}),
         data: { statement: q.question, isFact: q.correct === 'True', credit: `Open Trivia DB · ${q.sourceCategory}` },
       }));
     return [...fromPacks, ...fromTrivia];

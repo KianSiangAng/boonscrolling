@@ -1,0 +1,170 @@
+{
+  "id": "cs-numbers",
+  "title": "Number systems",
+  "category": "computing",
+  "topic": "cs-numbers",
+  "cards": [
+    {
+      "id": "byte",
+      "type": "fact",
+      "emoji": "🧱",
+      "title": "One byte",
+      "text": "A byte is 8 bits, so it can hold 2⁸ = 256 different values: 0 to 255 unsigned."
+    },
+    {
+      "id": "hex-nibble",
+      "type": "fact",
+      "emoji": "🎨",
+      "title": "Why hex?",
+      "text": "One hexadecimal digit is exactly 4 bits, so two hex digits describe a byte. That's why colours look like #FF8800: one byte each for red, green and blue."
+    },
+    {
+      "id": "twos-complement",
+      "type": "fact",
+      "emoji": "➖",
+      "title": "Two's complement",
+      "text": "Most computers store signed integers in two's complement. An 8-bit signed integer runs from −128 to 127; flipping all the bits and adding 1 negates a number."
+    },
+    {
+      "id": "2-10",
+      "type": "quiz",
+      "question": "What is 2¹⁰?",
+      "answer": "1,024",
+      "options": ["1,000", "2,048", "512"]
+    },
+    {
+      "id": "nibble",
+      "type": "quiz",
+      "question": "How many bits are in a nibble?",
+      "answer": "4",
+      "options": ["2", "8", "16"]
+    },
+    {
+      "id": "uint16",
+      "type": "quiz",
+      "question": "What is the largest value an unsigned 16-bit integer can hold?",
+      "answer": "65,535",
+      "options": ["65,536", "32,767", "16,384"],
+      "explanation": "2¹⁶ − 1: one less than the number of possible values, because 0 is one of them."
+    },
+    {
+      "id": "octal",
+      "type": "quiz",
+      "question": "Octal is base…",
+      "answer": "8",
+      "options": ["16", "2", "12"]
+    },
+    {
+      "id": "kilobyte",
+      "type": "myth",
+      "statement": "A kilobyte (kB) is officially 1,024 bytes.",
+      "isFact": false,
+      "explanation": "In SI units a kilobyte is 1,000 bytes. The 1,024-byte unit is the kibibyte (KiB)."
+    },
+    {
+      "id": "float-exact",
+      "type": "myth",
+      "statement": "Floating-point numbers can represent every decimal number exactly.",
+      "isFact": false,
+      "explanation": "Values like 0.1 have no finite binary representation, so they're stored as the nearest approximation."
+    },
+    {
+      "id": "float-sum",
+      "type": "code-output",
+      "lang": "js",
+      "code": ["console.log(0.1 + 0.2);"],
+      "answer": "0.30000000000000004",
+      "options": ["0.3", "0.30000000000000001", "0.2999999999999999"],
+      "explanation": "Neither 0.1 nor 0.2 is exact in binary floating point, and the tiny errors add up."
+    },
+    {
+      "id": "floor-div",
+      "type": "code-output",
+      "lang": "python",
+      "code": ["print(-7 // 2, -7 % 2)"],
+      "answer": "-4 1",
+      "options": ["-3 -1", "-3 1", "-4 -1"],
+      "explanation": "Python's // rounds down (towards −∞), and % takes the sign of the divisor."
+    },
+    {
+      "id": "bitwise",
+      "type": "code-output",
+      "lang": "js",
+      "code": ["console.log(5 & 3, 5 | 3, 5 ^ 3);"],
+      "answer": "1 7 6",
+      "options": ["8 7 6", "1 8 2", "3 5 7"],
+      "explanation": "5 is 101 and 3 is 011: AND gives 001, OR gives 111, XOR gives 110."
+    },
+    {
+      "id": "radix",
+      "type": "code-output",
+      "lang": "js",
+      "code": ["console.log((255).toString(16));", "console.log(parseInt(\"1010\", 2));"],
+      "answer": "ff\n10",
+      "options": ["FF\n10", "ff\n1010", "0xff\n10"],
+      "explanation": "toString(16) gives lowercase hex; parseInt with radix 2 reads binary."
+    },
+    {
+      "id": "literals",
+      "type": "code-output",
+      "lang": "python",
+      "code": ["print(1 << 4, 0b1010, 0x1F)"],
+      "answer": "16 10 31",
+      "options": ["5 10 31", "16 1010 1F", "16 10 15"],
+      "explanation": "Shifting 1 left by 4 doubles it four times; 0b and 0x literals are binary and hex."
+    },
+    {
+      "id": "conv-ff",
+      "type": "base-convert",
+      "value": 255,
+      "from": "dec",
+      "to": "hex"
+    },
+    {
+      "id": "conv-1111",
+      "type": "base-convert",
+      "value": 15,
+      "from": "bin",
+      "to": "dec"
+    },
+    {
+      "id": "conv-0x10",
+      "type": "base-convert",
+      "value": 16,
+      "from": "hex",
+      "to": "bin"
+    },
+    {
+      "id": "kib-kb",
+      "type": "higher-lower",
+      "metric": "number of bytes",
+      "a": {
+        "label": "1 KiB (kibibyte)",
+        "value": 1024,
+        "emoji": "💾"
+      },
+      "b": {
+        "label": "1 kB (kilobyte)",
+        "value": 1000,
+        "emoji": "📦"
+      }
+    },
+    {
+      "id": "int32",
+      "type": "higher-lower",
+      "metric": "size",
+      "a": {
+        "label": "Max signed 32-bit integer",
+        "value": 2147483647,
+        "emoji": "🔢"
+      },
+      "b": {
+        "label": "World population (2025, approx.)",
+        "value": 8200000000,
+        "emoji": "🌍"
+      },
+      "format": "compact",
+      "explanation": "A signed 32-bit ID can't give everyone on Earth their own number."
+    }
+  ]
+}

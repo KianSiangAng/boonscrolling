@@ -1,6 +1,6 @@
 import { getModule } from '../cards/registry';
 import { h } from '../cards/ui';
-import { categoryInfo } from '../core/categories';
+import { categoryInfo, topicInfo } from '../core/categories';
 import { getProgress, recordAnswer, recordSeen } from '../core/progress';
 import { seeded } from '../core/rng';
 import { pickNext } from '../core/scheduler';
@@ -150,13 +150,14 @@ export class Feed {
   private appendCard(card: CardInstance, isReview: boolean) {
     const mod = getModule(card.type);
     const cat = categoryInfo(card.category);
+    const topic = card.topic ? topicInfo(card.topic) : undefined;
     const body = h('div', { class: 'card-body' });
     const el = h(
       'section',
       {
         class: `slot type-${card.type}`,
         'aria-roledescription': 'card',
-        'aria-label': `${mod?.label ?? card.type}, ${cat.label}`,
+        'aria-label': `${mod?.label ?? card.type}, ${cat.label}${topic ? `: ${topic.label}` : ''}`,
       },
       h(
         'div',
@@ -164,7 +165,11 @@ export class Feed {
         h(
           'header',
           { class: 'card-meta' },
-          h('span', { class: 'chip' }, `${cat.icon} ${cat.label}`),
+          h(
+            'span',
+            { class: 'chip', title: topic?.label },
+            topic ? `${topic.icon} ${topic.short}` : `${cat.icon} ${cat.label}`,
+          ),
           h('span', { class: 'chip chip-type' }, `${mod?.icon ?? ''} ${mod?.label ?? card.type}`),
           isReview ? h('span', { class: 'chip chip-review', title: 'Spaced-repetition review' }, '↻ Review') : null,
         ),

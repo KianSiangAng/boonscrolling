@@ -1,6 +1,6 @@
 import type { Rng } from '../core/rng';
 import { shuffle } from '../core/rng';
-import type { CardInstance, PackCard, Sources } from '../core/types';
+import type { CardInstance, Pack, PackCard, Sources } from '../core/types';
 
 type Child = Node | string | number | null | undefined | false;
 type Props = Record<string, unknown> & { class?: string; text?: string };
@@ -57,9 +57,11 @@ export function choiceButtons(
   correct: string,
   rng: Rng,
   onPick: (correct: boolean, picked: string) => void,
+  opts: { shuffle?: boolean; className?: string } = {},
 ): HTMLElement {
-  const wrap = h('div', { class: 'choices' });
-  const buttons = shuffle(options, rng).map((opt) =>
+  const wrap = h('div', { class: `choices ${opts.className ?? ''}` });
+  const ordered = opts.shuffle === false ? options : shuffle(options, rng);
+  const buttons = ordered.map((opt) =>
     h('button', { class: 'choice', type: 'button', text: opt, onclick: () => choose(opt) }),
   );
   let done = false;
@@ -93,6 +95,13 @@ export function distractors<T>(groups: T[][], exclude: (t: T) => boolean, n: num
   return out;
 }
 
+/** Category and sub-topic for a pack card: its own, else the pack's. */
+export function packMeta(pack: Pack, c: PackCard): Pick<CardInstance, 'category' | 'topic'> {
+  const category = c.category ?? pack.category;
+  const topic = c.topic ?? (category === pack.category ? pack.topic : undefined);
+  return topic ? { category, topic } : { category };
+}
+
 /** All cards of a given type from /content packs, with stable ids and inherited categories. */
 export function packCards<D>(sources: Sources, type: string, toData: (c: PackCard) => D | null): CardInstance<D>[] {
   const out: CardInstance<D>[] = [];
@@ -100,7 +109,7 @@ export function packCards<D>(sources: Sources, type: string, toData: (c: PackCar
     for (const c of pack.cards) {
       if (c.type !== type) continue;
       const data = toData(c);
-      if (data) out.push({ id: `${type}:${pack.id}:${c.id}`, type, category: c.category ?? pack.category, data });
+      if (data) out.push({ id: `${type}:${pack.id}:${c.id}`, ...packMeta(pack, c), type, data });
     }
   }
   return out;
@@ -108,7 +117,9 @@ export function packCards<D>(sources: Sources, type: string, toData: (c: PackCar
 
 export const str = (x: unknown): string | null => (typeof x === 'string' && x.trim() ? x : null);
 
-export function formatNumber(value: number, style: 'compact' | 'number' = 'number'): string {
+/** 'plain' is for years and IDs: no thousands separators. */
+export function formatNumber(value: number, style: 'compact' | 'number' | 'plain' = 'number'): string {
+  if (style === 'plain') return String(value);
   if (style === 'compact' && Math.abs(value) >= 1e6) {
     return new Intl.NumberFormat(undefined, { notation: 'compact', maximumFractionDigits: 1 }).format(value);
   }

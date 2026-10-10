@@ -21,7 +21,11 @@ function rebuildPool(rebuildAll: boolean) {
 
 const unseenTrivia = () => {
   const progress = getProgress();
-  return pool.filter((c) => c.id.includes(':otdb:') && !progress.has(c.id)).length;
+  const counts = { mixed: 0, computers: 0 };
+  for (const c of pool) {
+    if (c.id.includes(':otdb:') && !progress.has(c.id)) counts[c.category === 'computing' ? 'computers' : 'mixed']++;
+  }
+  return counts;
 };
 
 function topBar() {

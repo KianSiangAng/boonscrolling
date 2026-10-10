@@ -1,0 +1,153 @@
+{
+  "id": "cs-history",
+  "title": "Computing history",
+  "category": "computing",
+  "topic": "cs-history",
+  "cards": [
+    {
+      "id": "lovelace",
+      "type": "fact",
+      "emoji": "📝",
+      "title": "The first program",
+      "text": "In 1843 Ada Lovelace published notes on Charles Babbage's Analytical Engine, including a method for computing Bernoulli numbers — often called the first computer program."
+    },
+    {
+      "id": "moth",
+      "type": "fact",
+      "emoji": "🦋",
+      "title": "The moth in the machine",
+      "text": "In 1947, operators of the Harvard Mark II taped a moth into the logbook as the “first actual case of bug being found”. Engineers had already been calling faults bugs for decades."
+    },
+    {
+      "id": "eniac",
+      "type": "fact",
+      "emoji": "🏭",
+      "title": "ENIAC",
+      "text": "ENIAC, completed in 1945, used about 18,000 vacuum tubes, weighed around 27 tonnes and filled a large room."
+    },
+    {
+      "id": "arpanet-lo",
+      "type": "fact",
+      "emoji": "📡",
+      "title": "“LO”",
+      "text": "The first message over ARPANET, in October 1969, was meant to be “LOGIN”. The system crashed after two letters, so the first message was “LO”."
+    },
+    {
+      "id": "www",
+      "type": "fact",
+      "emoji": "🕸️",
+      "title": "The Web's birthplace",
+      "text": "Tim Berners-Lee proposed the World Wide Web at CERN in 1989, and the first website went online in 1991."
+    },
+    {
+      "id": "moore",
+      "type": "fact",
+      "emoji": "📈",
+      "title": "Moore's law",
+      "text": "In 1965 Gordon Moore noted that the number of components on a chip was doubling every year; in 1975 he revised it to roughly every two years."
+    },
+    {
+      "id": "turing",
+      "type": "quiz",
+      "question": "Whose 1936 paper on computable numbers laid the foundations of theoretical computer science?",
+      "answer": "Alan Turing",
+      "options": ["John von Neumann", "Claude Shannon", "Charles Babbage"]
+    },
+    {
+      "id": "4004",
+      "type": "quiz",
+      "question": "Which company released the first commercial microprocessor, the 4004, in 1971?",
+      "answer": "Intel",
+      "options": ["IBM", "Texas Instruments", "Motorola"]
+    },
+    {
+      "id": "c-lang",
+      "type": "quiz",
+      "question": "Which language did Dennis Ritchie create at Bell Labs in the early 1970s?",
+      "answer": "C",
+      "options": ["Pascal", "Fortran", "BASIC"]
+    },
+    {
+      "id": "python-creator",
+      "type": "quiz",
+      "question": "Who created the Python programming language?",
+      "answer": "Guido van Rossum",
+      "options": ["James Gosling", "Bjarne Stroustrup", "Larry Wall"]
+    },
+    {
+      "id": "gnu",
+      "type": "quiz",
+      "question": "What does GNU stand for?",
+      "answer": "GNU's Not Unix",
+      "options": ["General Network Utilities", "Global Node Unix", "GNU Native Userland"],
+      "explanation": "A recursive acronym, chosen by Richard Stallman in 1983."
+    },
+    {
+      "id": "shannon",
+      "type": "quiz",
+      "question": "Claude Shannon's 1948 paper “A Mathematical Theory of Communication” founded which field?",
+      "answer": "Information theory",
+      "options": ["Cryptography", "Artificial intelligence", "Operating systems"]
+    },
+    {
+      "id": "bug-term",
+      "type": "myth",
+      "statement": "The word “bug” was invented when a moth was found inside a computer.",
+      "isFact": false,
+      "explanation": "Thomas Edison was already describing technical faults as bugs in the 1870s; the 1947 moth was a joke on an existing term."
+    },
+    {
+      "id": "640k",
+      "type": "myth",
+      "statement": "Bill Gates said “640K ought to be enough for anybody.”",
+      "isFact": false,
+      "explanation": "There's no evidence he ever said it, and he has denied it."
+    },
+    {
+      "id": "agc-memory",
+      "type": "myth",
+      "statement": "The Apollo Guidance Computer that flew to the Moon had about 4 KB of RAM.",
+      "isFact": true,
+      "explanation": "It had 2,048 words of erasable memory (roughly 4 KB) and about 72 KB of read-only rope memory."
+    },
+    {
+      "id": "web-internet",
+      "type": "myth",
+      "statement": "The World Wide Web and the Internet are the same thing.",
+      "isFact": false,
+      "explanation": "The Internet is the global network; the Web is one service running on it, alongside email, streaming and more."
+    },
+    {
+      "id": "year-c-python",
+      "type": "higher-lower",
+      "metric": "year of first release",
+      "a": {
+        "label": "C",
+        "value": 1972,
+        "emoji": "🅲"
+      },
+      "b": {
+        "label": "Python",
+        "value": 1991,
+        "emoji": "🐍"
+      },
+      "format": "plain"
+    },
+    {
+      "id": "year-linux-windows",
+      "type": "higher-lower",
+      "metric": "year of first release",
+      "a": {
+        "label": "Linux",
+        "value": 1991,
+        "emoji": "🐧"
+      },
+      "b": {
+        "label": "Windows 1.0",
+        "value": 1985,
+        "emoji": "🪟"
+      },
+      "format": "plain"
+    }
+  ]
+}

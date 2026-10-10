@@ -26,5 +26,6 @@ export function buildAllCards(sources: Sources): CardInstance[] {
 export function filterPool(all: CardInstance[], settings: Settings): CardInstance[] {
   const cats = new Set(enabledCategories(settings));
   const types = new Set(settings.disabledTypes);
-  return all.filter((c) => cats.has(c.category) && !types.has(c.type));
+  const topics = new Set<string>(settings.disabledTopics);
+  return all.filter((c) => cats.has(c.category) && !types.has(c.type) && !(c.topic && topics.has(c.topic)));
 }

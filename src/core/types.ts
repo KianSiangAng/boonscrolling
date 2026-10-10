@@ -1,5 +1,5 @@
 import type { FeatureCollection, MultiPolygon, Polygon } from 'geojson';
-import type { CategoryId } from './categories';
+import type { CategoryId, TopicId } from './categories';
 import type { Rng } from './rng';
 
 // ---------------------------------------------------------------------------
@@ -28,6 +28,7 @@ export interface TriviaQuestion {
   id: string;
   kind: 'multiple' | 'boolean';
   category: CategoryId;
+  topic?: TopicId;
   sourceCategory: string;
   difficulty: string;
   question: string;
@@ -40,6 +41,7 @@ export interface PackCard {
   id: string;
   type: string;
   category?: CategoryId;
+  topic?: TopicId;
   [key: string]: unknown;
 }
 
@@ -47,6 +49,8 @@ export interface Pack {
   id: string;
   title: string;
   category: CategoryId;
+  /** Optional sub-topic (see TOPICS) inherited by every card in the pack. */
+  topic?: TopicId;
   cards: PackCard[];
 }
 
@@ -75,6 +79,7 @@ export interface CardInstance<D = unknown> {
   id: string;
   type: string;
   category: CategoryId;
+  topic?: TopicId;
   data: D;
 }
 

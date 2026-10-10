@@ -1,0 +1,150 @@
+{
+  "id": "cs-os",
+  "title": "Operating systems",
+  "category": "computing",
+  "topic": "cs-os",
+  "cards": [
+    {
+      "id": "proc-thread",
+      "type": "fact",
+      "emoji": "🧵",
+      "title": "Processes vs threads",
+      "text": "Each process gets its own virtual address space. Threads inside one process share that memory, which makes them cheap to create but means they must coordinate access to shared data."
+    },
+    {
+      "id": "virtual-memory",
+      "type": "fact",
+      "emoji": "🪄",
+      "title": "Virtual memory",
+      "text": "Virtual memory gives every process the illusion of a large private memory. The OS maps virtual pages to physical RAM and can move rarely used pages out to disk."
+    },
+    {
+      "id": "coffman",
+      "type": "fact",
+      "emoji": "🔒",
+      "title": "Recipe for deadlock",
+      "text": "A deadlock needs four conditions at once: mutual exclusion, hold and wait, no preemption, and circular wait. Break any one and deadlock can't happen."
+    },
+    {
+      "id": "linux-1991",
+      "type": "fact",
+      "emoji": "🐧",
+      "title": "Just a hobby",
+      "text": "In August 1991 Linus Torvalds announced Linux as “just a hobby, won't be big and professional like gnu”. It now runs most of the world's servers and every Android phone."
+    },
+    {
+      "id": "context-switch",
+      "type": "quiz",
+      "question": "What is it called when the OS saves one process's CPU state and loads another's?",
+      "answer": "Context switch",
+      "options": ["Page fault", "System call", "Interrupt mask"]
+    },
+    {
+      "id": "page-fault",
+      "type": "quiz",
+      "question": "A page fault happens when a program…",
+      "answer": "touches memory that isn't currently mapped in RAM",
+      "options": ["divides by zero", "runs out of disk space", "recurses too deeply"]
+    },
+    {
+      "id": "starvation",
+      "type": "quiz",
+      "question": "Which CPU scheduling policy can starve long-running jobs?",
+      "answer": "Shortest job first",
+      "options": ["Round robin", "First-come, first-served", "Fair-share scheduling"],
+      "explanation": "If short jobs keep arriving, a long job may never get the CPU."
+    },
+    {
+      "id": "sigkill",
+      "type": "quiz",
+      "question": "Which signal does `kill -9` send on Unix?",
+      "answer": "SIGKILL",
+      "options": ["SIGTERM", "SIGINT", "SIGHUP"],
+      "explanation": "SIGKILL can't be caught or ignored; SIGTERM (the default) politely asks the process to exit."
+    },
+    {
+      "id": "mutex",
+      "type": "quiz",
+      "question": "What does a mutex guarantee?",
+      "answer": "Only one thread at a time in a critical section",
+      "options": ["Faster disk access", "Automatic garbage collection", "Memory shared between machines"]
+    },
+    {
+      "id": "passwd",
+      "type": "quiz",
+      "question": "Which file on Unix-like systems lists the user accounts?",
+      "answer": "/etc/passwd",
+      "options": ["/etc/hosts", "/etc/fstab", "/etc/resolv.conf"],
+      "explanation": "Despite its name, password hashes moved to /etc/shadow long ago."
+    },
+    {
+      "id": "pid1",
+      "type": "quiz",
+      "question": "What traditionally runs as process ID 1 on Unix-like systems?",
+      "answer": "init (e.g. systemd)",
+      "options": ["cron", "The login shell", "The kernel's scheduler"]
+    },
+    {
+      "id": "thread-process",
+      "type": "myth",
+      "statement": "A thread and a process are the same thing.",
+      "isFact": false,
+      "explanation": "A process is a running program with its own address space; threads are units of execution inside a process that share it."
+    },
+    {
+      "id": "zombie-cpu",
+      "type": "myth",
+      "statement": "A zombie process is one that is stuck burning CPU.",
+      "isFact": false,
+      "explanation": "A zombie has already exited; it lingers only as a process-table entry until its parent reads its exit status."
+    },
+    {
+      "id": "everything-file",
+      "type": "myth",
+      "statement": "On Linux, devices such as disks and terminals appear as files under /dev.",
+      "isFact": true,
+      "explanation": "“Everything is a file” is a core Unix idea: you read and write many devices with ordinary file operations."
+    },
+    {
+      "id": "more-ram",
+      "type": "myth",
+      "statement": "Adding more RAM always makes a computer faster.",
+      "isFact": false,
+      "explanation": "Extra RAM only helps if you were running short and swapping to disk; beyond that it sits unused."
+    },
+    {
+      "id": "latency-ram",
+      "type": "higher-lower",
+      "metric": "typical access latency",
+      "a": {
+        "label": "Main memory (RAM)",
+        "value": 100,
+        "emoji": "🧠"
+      },
+      "b": {
+        "label": "L1 cache",
+        "value": 1,
+        "emoji": "⚡"
+      },
+      "unit": "ns",
+      "explanation": "L1 cache sits on the CPU core and answers in around a nanosecond; RAM takes roughly 100× longer."
+    },
+    {
+      "id": "latency-disk",
+      "type": "higher-lower",
+      "metric": "typical random-read latency",
+      "a": {
+        "label": "SSD",
+        "value": 100,
+        "emoji": "💾"
+      },
+      "b": {
+        "label": "Spinning hard disk",
+        "value": 10000,
+        "emoji": "💿"
+      },
+      "unit": "µs",
+      "explanation": "A hard disk must physically move its head and wait for the platter: around 10 ms per random read."
+    }
+  ]
+}

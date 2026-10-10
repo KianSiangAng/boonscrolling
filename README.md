@@ -7,20 +7,24 @@ things you miss come back at growing intervals.
 - **Feed:** full-screen cards with CSS snap scrolling, infinite, one swipe per card (keyboard: ↑/↓, j/k).
 - **Card types:** fact, multiple-choice quiz, myth-or-fact swipe, higher-or-lower, flag guess, plus
   phase-2 **map tap** and **silhouette** cards drawn with D3 from bundled Natural Earth shapes.
+- **Computer Science:** a category with sub-topics (algorithms, networking, OS, databases, number
+  systems, security, history, code reading, Open Trivia DB computer questions) and its own card
+  types: code output, spot the bug, Big O, ports & protocols, timed base conversion,
+  data-structure matching, OSI drag-and-drop and regex matching.
 - **Spaced repetition:** progress lives in IndexedDB. Misses drop to box 1 and return in 10 minutes,
   then 1 day → 3 days → 1 week → 3 weeks → 2 months as you keep getting them right.
 - **Scheduler:** ~70% new cards and ~30% due reviews, never the same card type twice in a row, and
   weighted toward your weakest categories.
 - **Offline & installable:** web manifest and a service worker that precaches the whole app,
   including content packs and map data. Flags are cached as you see them.
-- **Settings:** category and card-type toggles, progress stats, export/import of progress as JSON.
+- **Settings:** category, sub-topic and card-type toggles, progress stats, export/import of progress as JSON.
 
 ## Getting started
 
 ```sh
 npm install
 npm run dev        # http://localhost:5173 (no service worker in dev)
-npm test           # vitest: Leitner, scheduler, backup, data mappers, card registry
+npm test           # vitest; also executes every code/regex card's answer (needs python3 on PATH)
 npm run build      # typecheck + production build into dist/ (includes sw.js)
 npm run preview    # serve dist/ to try the PWA and offline mode
 ```
@@ -41,7 +45,7 @@ configuration.
 | Source | Used for | Notes |
 | --- | --- | --- |
 | `/content/*.json` | All card types | Bundled card packs, precached for offline use. |
-| [Open Trivia DB](https://opentdb.com) | Quiz and myth-or-fact cards | Fetched client-side in batches of 50 with a persisted session token (no repeats), cached in IndexedDB, topped up as you use them. CC BY-SA 4.0. |
+| [Open Trivia DB](https://opentdb.com) | Quiz and myth-or-fact cards | Fetched client-side in batches of 50 with a persisted session token (no repeats), cached in IndexedDB, topped up as you use them. “Science: Computers” is fetched as its own stream for the Computer Science category. CC BY-SA 4.0. |
 | [REST Countries](https://restcountries.com) v5 | Flags, capitals, higher-or-lower, country spotlights | **Optional, needs an API key** (see below). Cached in IndexedDB for 14 days. |
 | Bundled country snapshot | Same as above, offline | `src/data/countries.snapshot.json`, built from [mledoze/countries](https://github.com/mledoze/countries) (ODbL) and Natural Earth population estimates. |
 | [Natural Earth](https://www.naturalearthdata.com) 1:50m | Map tap and silhouette cards | `src/geo/countries-geo.json`, simplified to 145 KB gzipped and lazy-loaded. Public domain. |
@@ -152,6 +156,31 @@ their own. Categories: `geography`, `science`, `history`, `nature`, `arts`, `ent
 ```
 
 Don't change a card's `id` after release, or users lose its review history.
+
+A pack may also set `"topic"` (a sub-topic id from `TOPICS` in `src/core/categories.ts`, which
+must belong to the pack's category); every card inherits it and gets its own settings toggle.
+
+#### Computer Science card types
+
+Snippets are arrays of lines and must fit a phone: at most **8 lines of 38 characters**.
+
+| `type` | Fields |
+| --- | --- |
+| `code-output` | `lang` (`js`, `python`, `sql`), `code`, `answer` (exact stdout, lines joined by `\n`), `options` (wrong answers) |
+| `spot-the-bug` | `lang` (`js`, `python`), `goal`, `code`, `bugLine` (1-based), `fix` (the corrected line), `checks: [{ "call", "expect" }]` |
+| `big-o` | `prompt`, `answer` (e.g. `"O(n log n)"`), optional `code` + `lang`, optional `options` |
+| `port-protocol` | `port`, `protocol`, `transport`, optional `note`. Becomes two cards, one per direction. |
+| `base-convert` | `value`, `from`, `to` (`bin`, `dec`, `hex`). 48 more are generated. 20 s timer (30 s for long binary). |
+| `ds-match` | `pairs: [[structure, use], …]`, optional `prompt` |
+| `osi-sort` | `items: [{ "label", "layer" }]` with layers 1–7 |
+| `regex-match` | `pattern`, optional `flags`, `candidates`, `matches` (the candidates it matches) |
+
+`tests/cs-content.test.ts` keeps these honest. It runs every `code-output` snippet (Node, Python,
+or SQLite via Python) and compares stdout with `answer`. For every `spot-the-bug`, it checks
+that the original code fails at least one `check` and that swapping `bugLine` for `fix` passes
+all of them. For every `regex-match`, it runs the pattern against the candidates and compares
+the result with `matches`. It also enforces the phone-width limits. A card with a wrong answer
+fails CI and never deploys.
 
 ### Scheduling details
 

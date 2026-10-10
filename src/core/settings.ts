@@ -1,4 +1,4 @@
-import { CATEGORY_IDS, type CategoryId, isCategory } from './categories';
+import { CATEGORY_IDS, type CategoryId, isCategory, isTopic, type TopicId } from './categories';
 import { kvGet, kvSet } from './db';
 
 export interface Settings {
@@ -6,6 +6,8 @@ export interface Settings {
   disabledCategories: CategoryId[];
   /** Disabled card types, by module `type`. */
   disabledTypes: string[];
+  /** Disabled sub-topics (see TOPICS). */
+  disabledTopics: TopicId[];
   /** Optional REST Countries v5 API key (overrides the build-time key). */
   restCountriesKey: string;
 }
@@ -13,6 +15,7 @@ export interface Settings {
 export const DEFAULT_SETTINGS: Settings = {
   disabledCategories: [],
   disabledTypes: [],
+  disabledTopics: [],
   restCountriesKey: '',
 };
 
@@ -25,6 +28,7 @@ export function sanitizeSettings(raw: unknown): Settings {
   return {
     disabledCategories: Array.isArray(r.disabledCategories) ? r.disabledCategories.filter(isCategory) : [],
     disabledTypes: Array.isArray(r.disabledTypes) ? r.disabledTypes.filter((t) => typeof t === 'string') : [],
+    disabledTopics: Array.isArray(r.disabledTopics) ? r.disabledTopics.filter(isTopic) : [],
     restCountriesKey: typeof r.restCountriesKey === 'string' ? r.restCountriesKey.trim() : '',
   };
 }

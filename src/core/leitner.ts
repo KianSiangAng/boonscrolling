@@ -43,20 +43,20 @@ interface CardRef {
 }
 
 function base(card: CardRef, prev: ProgressRecord | undefined): ProgressRecord {
-  return (
-    prev ?? {
-      id: card.id,
-      type: card.type,
-      category: card.category,
-      box: 0,
-      due: 0,
-      seen: 0,
-      correct: 0,
-      wrong: 0,
-      lastSeen: 0,
-      lastResult: 'seen',
-    }
-  );
+  // A card's category can change between releases; the latest one wins.
+  if (prev) return { ...prev, category: card.category };
+  return {
+    id: card.id,
+    type: card.type,
+    category: card.category,
+    box: 0,
+    due: 0,
+    seen: 0,
+    correct: 0,
+    wrong: 0,
+    lastSeen: 0,
+    lastResult: 'seen',
+  };
 }
 
 /**

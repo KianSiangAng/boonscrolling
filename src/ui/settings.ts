@@ -1,7 +1,7 @@
 import { CARD_MODULES } from '../cards/registry';
 import { h } from '../cards/ui';
 import { createBackup, importBackup } from '../core/backup';
-import { CATEGORIES } from '../core/categories';
+import { CATEGORIES, topicsFor } from '../core/categories';
 import { MAX_BOX } from '../core/leitner';
 import { getActivity, getProgress, resetProgress } from '../core/progress';
 import { categoryStats } from '../core/scheduler';
@@ -49,6 +49,19 @@ export function renderSettings(root: HTMLElement, deps: SettingsDeps, note = '')
     return m;
   };
   const perCategory = countBy('category');
+  // Sub-topic stats: card counts from the pool, accuracy from progress records of those cards.
+  const topicStats = new Map<string, { cards: number; correct: number; wrong: number }>();
+  for (const c of all) {
+    if (!c.topic) continue;
+    const t = topicStats.get(c.topic) ?? { cards: 0, correct: 0, wrong: 0 };
+    t.cards++;
+    const rec = progress.get(c.id);
+    if (rec) {
+      t.correct += rec.correct;
+      t.wrong += rec.wrong;
+    }
+    topicStats.set(c.topic, t);
+  }
   const perType = countBy('type');
   const message = h('p', { class: 'settings-message', role: 'status' }, note);
   const say = (text: string) => (message.textContent = text);
@@ -59,13 +72,40 @@ export function renderSettings(root: HTMLElement, deps: SettingsDeps, note = '')
     { class: 'settings-section' },
     h('h2', null, 'Categories'),
     h('p', { class: 'muted' }, 'The feed leans toward the categories you get wrong most.'),
-    ...CATEGORIES.map((cat) => {
+    ...CATEGORIES.flatMap((cat) => {
       const s = stats.get(cat.id);
       const hint = `${perCategory.get(cat.id) ?? 0} cards · accuracy ${pct(s?.correct ?? 0, s?.wrong ?? 0)}`;
-      return toggle(
+      const topics = topicsFor(cat.id);
+      const group = topics.length
+        ? h(
+            'div',
+            {
+              class: `subtoggles${settings.disabledCategories.includes(cat.id) ? ' is-off' : ''}`,
+              role: 'group',
+              'aria-label': `${cat.label} topics`,
+            },
+            ...topics.map((t) => {
+              const ts = topicStats.get(t.id);
+              return toggle(
+                `${t.icon} ${t.label}`,
+                !settings.disabledTopics.includes(t.id),
+                (on) => {
+                  const current = getSettings();
+                  const set = new Set(current.disabledTopics);
+                  if (on) set.delete(t.id);
+                  else set.add(t.id);
+                  void saveSettings({ ...current, disabledTopics: [...set] });
+                },
+                `${ts?.cards ?? 0} cards · accuracy ${pct(ts?.correct ?? 0, ts?.wrong ?? 0)}`,
+              );
+            }),
+          )
+        : null;
+      const main = toggle(
         `${cat.icon} ${cat.label}`,
         !settings.disabledCategories.includes(cat.id),
         (on) => {
+          group?.classList.toggle('is-off', !on);
           const current = getSettings();
           const set = new Set(current.disabledCategories);
           if (on) set.delete(cat.id);
@@ -74,6 +114,7 @@ export function renderSettings(root: HTMLElement, deps: SettingsDeps, note = '')
         },
         hint,
       );
+      return group ? [main, group] : [main];
     }),
   );
 
@@ -257,7 +298,7 @@ export function renderSettings(root: HTMLElement, deps: SettingsDeps, note = '')
           type: 'button',
           onclick: async () => {
             say('Fetching trivia… (Open Trivia DB allows one request every 5 s)');
-            await topUpTrivia(() => 0);
+            await topUpTrivia(() => ({ mixed: 0, computers: 0 }), true);
             say(status.trivia);
           },
         },

@@ -13,7 +13,7 @@ interface HigherLowerData {
   /** e.g. "population" — reads as "a higher or lower population than…" */
   metric: string;
   unit?: string;
-  format?: 'compact' | 'number';
+  format?: 'compact' | 'number' | 'plain';
   a: Side;
   b: Side;
   explanation?: string;
@@ -99,7 +99,7 @@ const higherLower: CardModule<HigherLowerData> = {
         a,
         b,
         unit: str(c.unit) ?? undefined,
-        format: c.format === 'compact' ? 'compact' : 'number',
+        format: c.format === 'compact' || c.format === 'plain' ? c.format : 'number',
         explanation: str(c.explanation) ?? undefined,
       };
     });

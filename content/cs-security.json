@@ -1,0 +1,151 @@
+{
+  "id": "cs-security",
+  "title": "Security",
+  "category": "computing",
+  "topic": "cs-security",
+  "cards": [
+    {
+      "id": "password-hashing",
+      "type": "fact",
+      "emoji": "🧂",
+      "title": "Storing passwords",
+      "text": "Passwords should be stored with a slow, salted hash designed for the job, such as bcrypt, scrypt or Argon2. Fast hashes like MD5 or SHA-1 let attackers try billions of guesses per second."
+    },
+    {
+      "id": "tls",
+      "type": "fact",
+      "emoji": "🔒",
+      "title": "What the padlock means",
+      "text": "HTTPS wraps HTTP in TLS, which encrypts the traffic and uses certificates to prove you're talking to the server that owns the domain."
+    },
+    {
+      "id": "public-key",
+      "type": "fact",
+      "emoji": "🗝️",
+      "title": "Key pairs",
+      "text": "Public-key cryptography uses two linked keys: what one encrypts, only the other can decrypt. You can publish the public key freely and keep the private key secret."
+    },
+    {
+      "id": "sqli",
+      "type": "quiz",
+      "question": "Which attack smuggles database commands in through user input?",
+      "answer": "SQL injection",
+      "options": ["Cross-site scripting", "Cross-site request forgery", "Phishing"]
+    },
+    {
+      "id": "sqli-defence",
+      "type": "quiz",
+      "question": "What is the most reliable defence against SQL injection?",
+      "answer": "Parameterised queries",
+      "options": ["Hiding database error messages", "Using POST instead of GET", "URL-encoding the input"]
+    },
+    {
+      "id": "xss",
+      "type": "quiz",
+      "question": "What does XSS stand for?",
+      "answer": "Cross-site scripting",
+      "options": ["Cross-server sharing", "Extended security standard", "Cross-site spoofing"]
+    },
+    {
+      "id": "hash-vs-enc",
+      "type": "quiz",
+      "question": "Which of these is a hash function rather than an encryption algorithm?",
+      "answer": "SHA-256",
+      "options": ["AES", "RSA", "ChaCha20"]
+    },
+    {
+      "id": "salt",
+      "type": "quiz",
+      "question": "What does adding a salt to password hashing achieve?",
+      "answer": "Identical passwords get different hashes",
+      "options": ["The password becomes encrypted", "Hashing becomes faster", "The username is hidden"],
+      "explanation": "Salts defeat precomputed rainbow tables and stop one cracked hash revealing every user with the same password."
+    },
+    {
+      "id": "least-privilege",
+      "type": "quiz",
+      "question": "Which principle says every user and program should get only the access it needs?",
+      "answer": "Least privilege",
+      "options": ["Defence in depth", "Security through obscurity", "Separation of duties"]
+    },
+    {
+      "id": "https-trust",
+      "type": "myth",
+      "statement": "If a site uses HTTPS, it's safe to trust.",
+      "isFact": false,
+      "explanation": "HTTPS only means the connection is encrypted to whoever owns that domain. Phishing sites use HTTPS too."
+    },
+    {
+      "id": "incognito",
+      "type": "myth",
+      "statement": "Private/incognito browsing hides your activity from your internet provider.",
+      "isFact": false,
+      "explanation": "Incognito only stops your browser saving history and cookies locally; your network and the sites you visit still see the traffic."
+    },
+    {
+      "id": "hash-reverse",
+      "type": "myth",
+      "statement": "A hash can be reversed if you have the right key.",
+      "isFact": false,
+      "explanation": "Hashes have no key: they're one-way. Attackers “crack” them by guessing inputs and comparing outputs."
+    },
+    {
+      "id": "passphrase",
+      "type": "myth",
+      "statement": "A long passphrase of random words can be stronger than a short password full of symbols.",
+      "isFact": true,
+      "explanation": "Strength comes mostly from length and randomness: four or five random words beat eight characters of l33t-speak."
+    },
+    {
+      "id": "anchors-missing",
+      "type": "regex-match",
+      "pattern": "\\d{3}-\\d{4}",
+      "candidates": ["555-1234", "x555-1234", "555-12345", "55-1234"],
+      "matches": ["555-1234", "x555-1234", "555-12345"],
+      "explanation": "Without ^ and $ the pattern matches anywhere inside the string, so junk before or after slips through validation."
+    },
+    {
+      "id": "password-policy",
+      "type": "regex-match",
+      "pattern": "^(?=.*\\d)(?=.*[A-Z]).{8,}$",
+      "candidates": ["Password1", "password1", "PASSWORD", "Pass1", "Tr0ub4dor"],
+      "matches": ["Password1", "Tr0ub4dor"],
+      "explanation": "The lookaheads require a digit and an uppercase letter; .{8,} requires at least 8 characters."
+    },
+    {
+      "id": "path-traversal",
+      "type": "spot-the-bug",
+      "lang": "python",
+      "goal": "Reject paths that could escape the uploads folder.",
+      "code": [
+        "def safe(path):",
+        "    if path.startswith(\"/\"):",
+        "        return False",
+        "    if path.startswith(\"..\"):",
+        "        return False",
+        "    return True"
+      ],
+      "bugLine": 4,
+      "fix": "    if \"..\" in path.split(\"/\"):",
+      "checks": [
+        {
+          "call": "safe(\"a/../../etc/passwd\")",
+          "expect": false
+        },
+        {
+          "call": "safe(\"docs/a.txt\")",
+          "expect": true
+        },
+        {
+          "call": "safe(\"/etc\")",
+          "expect": false
+        },
+        {
+          "call": "safe(\"../x\")",
+          "expect": false
+        }
+      ],
+      "explanation": "A “..” segment anywhere in the path climbs a directory, not just at the start."
+    }
+  ]
+}

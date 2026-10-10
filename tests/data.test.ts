@@ -21,7 +21,8 @@ describe('Open Trivia DB', () => {
   });
 
   it('maps every documented category to one of ours', () => {
-    expect(mapOpenTdbCategory('Science: Computers')).toBe('science');
+    expect(mapOpenTdbCategory('Science: Computers')).toBe('computing');
+    expect(mapOpenTdbCategory('Science: Gadgets')).toBe('science');
     expect(mapOpenTdbCategory('Entertainment: Video Games')).toBe('entertainment');
     expect(mapOpenTdbCategory('Animals')).toBe('nature');
     expect(mapOpenTdbCategory('Mythology')).toBe('history');

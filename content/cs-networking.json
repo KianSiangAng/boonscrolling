@@ -1,0 +1,212 @@
+{
+  "id": "cs-networking",
+  "title": "Networking",
+  "category": "computing",
+  "topic": "cs-networking",
+  "cards": [
+    {
+      "id": "ip-sizes",
+      "type": "fact",
+      "emoji": "🔢",
+      "title": "Running out of addresses",
+      "text": "IPv4 addresses are 32 bits, which allows about 4.3 billion addresses — fewer than the number of connected devices today. IPv6 addresses are 128 bits."
+    },
+    {
+      "id": "handshake",
+      "type": "fact",
+      "emoji": "🤝",
+      "title": "Three-way handshake",
+      "text": "TCP sets up a connection with three packets: the client sends SYN, the server replies SYN-ACK, and the client answers ACK. Only then does data flow."
+    },
+    {
+      "id": "dns",
+      "type": "quiz",
+      "question": "Which protocol turns a domain name like example.com into an IP address?",
+      "answer": "DNS",
+      "options": ["DHCP", "ARP", "NAT"]
+    },
+    {
+      "id": "arp",
+      "type": "quiz",
+      "question": "On a local network, which protocol finds the MAC address for an IPv4 address?",
+      "answer": "ARP",
+      "options": ["DNS", "ICMP", "BGP"]
+    },
+    {
+      "id": "ping",
+      "type": "quiz",
+      "question": "Which protocol does the ping tool use?",
+      "answer": "ICMP",
+      "options": ["TCP", "UDP", "ARP"],
+      "explanation": "ping sends ICMP Echo Request messages and waits for Echo Replies."
+    },
+    {
+      "id": "slash24",
+      "type": "quiz",
+      "question": "How many usable host addresses are in an IPv4 /24 subnet?",
+      "answer": "254",
+      "options": ["256", "255", "24"],
+      "explanation": "8 host bits give 256 addresses, minus the network and broadcast addresses."
+    },
+    {
+      "id": "udp-order",
+      "type": "myth",
+      "statement": "UDP guarantees that packets arrive in the order they were sent.",
+      "isFact": false,
+      "explanation": "UDP makes no promises about order or delivery; TCP is the one that reorders and retransmits."
+    },
+    {
+      "id": "http3-udp",
+      "type": "myth",
+      "statement": "HTTP/3 runs over QUIC, which is built on UDP rather than TCP.",
+      "isFact": true,
+      "explanation": "QUIC implements reliability and encryption itself on top of UDP, avoiding TCP head-of-line blocking."
+    },
+    {
+      "id": "ftp",
+      "type": "port-protocol",
+      "port": 21,
+      "protocol": "FTP",
+      "transport": "TCP",
+      "note": "Port 21 carries FTP's control connection; data uses separate connections."
+    },
+    {
+      "id": "ssh",
+      "type": "port-protocol",
+      "port": 22,
+      "protocol": "SSH",
+      "transport": "TCP"
+    },
+    {
+      "id": "smtp",
+      "type": "port-protocol",
+      "port": 25,
+      "protocol": "SMTP",
+      "transport": "TCP",
+      "note": "Port 25 is server-to-server mail relay; mail clients usually submit on 587."
+    },
+    {
+      "id": "dns",
+      "type": "port-protocol",
+      "port": 53,
+      "protocol": "DNS",
+      "transport": "UDP and TCP",
+      "note": "Most lookups use UDP; large responses and zone transfers use TCP."
+    },
+    {
+      "id": "dhcp",
+      "type": "port-protocol",
+      "port": 67,
+      "protocol": "DHCP (server)",
+      "transport": "UDP",
+      "note": "DHCP clients listen on port 68."
+    },
+    {
+      "id": "http",
+      "type": "port-protocol",
+      "port": 80,
+      "protocol": "HTTP",
+      "transport": "TCP"
+    },
+    {
+      "id": "ntp",
+      "type": "port-protocol",
+      "port": 123,
+      "protocol": "NTP",
+      "transport": "UDP"
+    },
+    {
+      "id": "https",
+      "type": "port-protocol",
+      "port": 443,
+      "protocol": "HTTPS",
+      "transport": "TCP (and UDP for HTTP/3)"
+    },
+    {
+      "id": "rdp",
+      "type": "port-protocol",
+      "port": 3389,
+      "protocol": "RDP",
+      "transport": "TCP"
+    },
+    {
+      "id": "osi-stack",
+      "type": "osi-sort",
+      "items": [
+        {
+          "label": "HTTP",
+          "layer": 7
+        },
+        {
+          "label": "TCP",
+          "layer": 4
+        },
+        {
+          "label": "IP",
+          "layer": 3
+        },
+        {
+          "label": "Ethernet frame",
+          "layer": 2
+        },
+        {
+          "label": "Bits on fibre",
+          "layer": 1
+        }
+      ]
+    },
+    {
+      "id": "osi-devices",
+      "type": "osi-sort",
+      "items": [
+        {
+          "label": "Router",
+          "layer": 3
+        },
+        {
+          "label": "Switch",
+          "layer": 2
+        },
+        {
+          "label": "Hub",
+          "layer": 1
+        },
+        {
+          "label": "UDP",
+          "layer": 4
+        },
+        {
+          "label": "DNS",
+          "layer": 7
+        }
+      ],
+      "explanation": "Hubs repeat raw signals, switches forward by MAC address, routers forward by IP address."
+    },
+    {
+      "id": "osi-addresses",
+      "type": "osi-sort",
+      "items": [
+        {
+          "label": "MAC address",
+          "layer": 2
+        },
+        {
+          "label": "IP address",
+          "layer": 3
+        },
+        {
+          "label": "Port number",
+          "layer": 4
+        },
+        {
+          "label": "SMTP",
+          "layer": 7
+        },
+        {
+          "label": "ICMP",
+          "layer": 3
+        }
+      ]
+    }
+  ]
+}

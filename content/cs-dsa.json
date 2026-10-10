@@ -1,0 +1,226 @@
+{
+  "id": "cs-dsa",
+  "title": "Data structures & algorithms",
+  "category": "computing",
+  "topic": "cs-dsa",
+  "cards": [
+    {
+      "id": "binary-search-30",
+      "type": "fact",
+      "emoji": "🔎",
+      "title": "30 guesses for a billion",
+      "text": "Binary search halves the remaining range at every step, so finding an item among a billion sorted ones takes at most about 30 comparisons (2³⁰ ≈ 1.07 billion)."
+    },
+    {
+      "id": "quicksort-worst",
+      "type": "fact",
+      "emoji": "🎲",
+      "title": "Quicksort's bad day",
+      "text": "Quicksort averages O(n log n), but consistently bad pivots (say, always the first element of already-sorted data) push it to O(n²). Randomised or median-of-three pivots make that very unlikely."
+    },
+    {
+      "id": "hash-collisions",
+      "type": "fact",
+      "emoji": "🗂️",
+      "title": "Hash tables aren't magic",
+      "text": "Hash tables give O(1) lookups on average, but if many keys collide in the same bucket, a lookup can degrade to O(n). Good hash functions and resizing keep collisions rare."
+    },
+    {
+      "id": "lifo",
+      "type": "quiz",
+      "question": "Which data structure is Last-In, First-Out?",
+      "answer": "Stack",
+      "options": ["Queue", "Heap", "Hash map"],
+      "explanation": "Think of a stack of plates: you take the last one you put on top."
+    },
+    {
+      "id": "inorder",
+      "type": "quiz",
+      "question": "Which traversal of a binary search tree visits the keys in sorted order?",
+      "answer": "In-order",
+      "options": ["Pre-order", "Post-order", "Level-order"]
+    },
+    {
+      "id": "min-heap-root",
+      "type": "quiz",
+      "question": "What is always at the root of a min-heap?",
+      "answer": "The smallest element",
+      "options": ["The largest element", "The most recently added element", "The median element"]
+    },
+    {
+      "id": "bfs-unweighted",
+      "type": "quiz",
+      "question": "Which algorithm finds shortest paths (fewest edges) in an unweighted graph?",
+      "answer": "Breadth-first search",
+      "options": ["Depth-first search", "Kruskal's algorithm", "Prim's algorithm"],
+      "explanation": "Prim's and Kruskal's build minimum spanning trees, not shortest paths."
+    },
+    {
+      "id": "merge-stable",
+      "type": "myth",
+      "statement": "Merge sort is a stable sort: equal elements keep their original order.",
+      "isFact": true,
+      "explanation": "Standard merge sort is stable because, on ties, it takes from the left half first."
+    },
+    {
+      "id": "linked-front",
+      "type": "myth",
+      "statement": "Inserting at the front of an array is as fast as inserting at the front of a linked list.",
+      "isFact": false,
+      "explanation": "A linked list inserts at the head in O(1); an array must shift every element along, which is O(n)."
+    },
+    {
+      "id": "bigo-binary-search",
+      "type": "big-o",
+      "prompt": "Binary search in a sorted array",
+      "answer": "O(log n)",
+      "explanation": "Each comparison halves the remaining range."
+    },
+    {
+      "id": "bigo-pairs",
+      "type": "big-o",
+      "prompt": "Checking every pair of items",
+      "lang": "python",
+      "code": [
+        "for a in items:",
+        "    for b in items:",
+        "        if a + b == target:",
+        "            return True",
+        "return False"
+      ],
+      "answer": "O(n²)",
+      "explanation": "Two nested loops over n items: n × n iterations in the worst case."
+    },
+    {
+      "id": "bigo-hash-lookup",
+      "type": "big-o",
+      "prompt": "Looking up a key in a hash map (average case)",
+      "answer": "O(1)",
+      "explanation": "The hash points straight at the bucket; with few collisions that's constant time."
+    },
+    {
+      "id": "bigo-merge-sort",
+      "type": "big-o",
+      "prompt": "Sorting n items with merge sort",
+      "answer": "O(n log n)",
+      "explanation": "log n levels of splitting, and O(n) work to merge at each level."
+    },
+    {
+      "id": "bigo-halving",
+      "type": "big-o",
+      "prompt": "How many times does this loop run?",
+      "lang": "js",
+      "code": ["let i = n;", "while (i > 1) {", "  i = Math.floor(i / 2);", "}"],
+      "answer": "O(log n)",
+      "explanation": "i halves every iteration, so the loop runs about log₂ n times."
+    },
+    {
+      "id": "match-classic",
+      "type": "ds-match",
+      "pairs": [
+        ["Stack", "Undo history"],
+        ["Queue", "Print jobs in arrival order"],
+        ["Hash map", "Look up a phone number by name"],
+        ["Priority queue", "Emergency room triage"]
+      ]
+    },
+    {
+      "id": "match-specialist",
+      "type": "ds-match",
+      "pairs": [
+        ["Trie", "Autocomplete by prefix"],
+        ["Graph", "Road network"],
+        ["Set", "Removing duplicates"],
+        ["Binary search tree", "Keys kept in sorted order"]
+      ]
+    },
+    {
+      "id": "match-tradeoffs",
+      "type": "ds-match",
+      "pairs": [
+        ["Array", "Instant access by index"],
+        ["Linked list", "Cheap insert after a known node"],
+        ["Deque", "Add or remove at both ends"],
+        ["Bloom filter", "“Probably in the set?” in tiny memory"]
+      ]
+    },
+    {
+      "id": "deque-output",
+      "type": "code-output",
+      "lang": "python",
+      "code": ["from collections import deque", "q = deque([1, 2, 3])", "q.append(4)", "q.popleft()", "print(list(q))"],
+      "answer": "[2, 3, 4]",
+      "options": ["[1, 2, 3]", "[1, 2, 3, 4]", "[2, 3]"],
+      "explanation": "A queue is first-in, first-out: popleft() removes 1, the oldest item."
+    },
+    {
+      "id": "bug-binary-search",
+      "type": "spot-the-bug",
+      "lang": "python",
+      "goal": "Return the index of x in the sorted list a, or -1.",
+      "code": [
+        "def search(a, x):",
+        "    lo, hi = 0, len(a) - 1",
+        "    while lo < hi:",
+        "        m = (lo + hi) // 2",
+        "        if a[m] == x: return m",
+        "        if a[m] < x: lo = m + 1",
+        "        else: hi = m - 1",
+        "    return -1"
+      ],
+      "bugLine": 3,
+      "fix": "    while lo <= hi:",
+      "checks": [
+        {
+          "call": "search([1, 3, 5], 5)",
+          "expect": 2
+        },
+        {
+          "call": "search([1, 3, 5], 1)",
+          "expect": 0
+        },
+        {
+          "call": "search([7], 7)",
+          "expect": 0
+        },
+        {
+          "call": "search([1, 3, 5], 4)",
+          "expect": -1
+        }
+      ],
+      "explanation": "With lo < hi the loop stops before checking the last remaining candidate, so items at the edges can be missed."
+    },
+    {
+      "id": "bug-reverse",
+      "type": "spot-the-bug",
+      "lang": "python",
+      "goal": "Reverse the list in place and return it.",
+      "code": [
+        "def reverse(a):",
+        "    i, j = 0, len(a) - 1",
+        "    while i < j:",
+        "        a[i], a[j] = a[j], a[i]",
+        "        i += 1",
+        "        j += 1",
+        "    return a"
+      ],
+      "bugLine": 6,
+      "fix": "        j -= 1",
+      "checks": [
+        {
+          "call": "reverse([1, 2, 3])",
+          "expect": [3, 2, 1]
+        },
+        {
+          "call": "reverse([1, 2, 3, 4])",
+          "expect": [4, 3, 2, 1]
+        },
+        {
+          "call": "reverse([])",
+          "expect": []
+        }
+      ],
+      "explanation": "The two pointers must move towards each other; j += 1 walks off the end of the list."
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { isCategory } from '../core/categories';
+import { isCategory, isTopic, topicInfo } from '../core/categories';
 import type { Pack, PackCard } from '../core/types';
 
 /**
@@ -16,7 +16,12 @@ export function validatePack(raw: unknown, file: string): Pack | null {
   const cards = (Array.isArray(p.cards) ? p.cards : []).filter(
     (c): c is PackCard => !!c && typeof c.id === 'string' && typeof c.type === 'string',
   );
-  return { id: p.id, title: p.title, category: p.category, cards };
+  let topic = p.topic;
+  if (topic !== undefined && (!isTopic(topic) || topicInfo(topic)?.category !== p.category)) {
+    console.warn(`[packs] ${file}: topic "${topic}" doesn't belong to ${p.category}, ignored`);
+    topic = undefined;
+  }
+  return { id: p.id, title: p.title, category: p.category, topic, cards };
 }
 
 export async function loadPacks(): Promise<Pack[]> {

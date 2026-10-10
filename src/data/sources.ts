@@ -10,7 +10,7 @@ import {
 } from './countries';
 import { loadGeo } from './geo';
 import { loadPacks } from './packs';
-import { cachedTrivia, refreshTrivia } from './trivia';
+import { cachedTrivia, refreshTrivia, type TriviaStream } from './trivia';
 
 /** Live view of every data source. Card pools are rebuilt whenever it changes. */
 export const sources: Sources = {
@@ -35,8 +35,8 @@ export function onSourcesChange(fn: Listener): () => void {
 }
 const emit = () => listeners.forEach((fn) => fn());
 
-/** The trivia pool is topped up when fewer than this many questions remain unseen. */
-const TRIVIA_LOW_WATER = 120;
+/** A trivia stream is topped up when fewer than this many of its questions remain unseen. */
+const TRIVIA_LOW_WATER: Record<TriviaStream, number> = { mixed: 120, computers: 40 };
 
 export function restCountriesKey(): string {
   return getSettings().restCountriesKey || BUILD_TIME_KEY;
@@ -55,7 +55,7 @@ export async function loadLocalSources(): Promise<void> {
 }
 
 /** Kick off lazy and network sources; each one emits a change when it lands. */
-export function loadRemoteSources(unseenTrivia: () => number): void {
+export function loadRemoteSources(unseenTrivia: UnseenTrivia): void {
   loadGeo()
     .then((geo) => {
       sources.geo = geo;
@@ -85,12 +85,22 @@ export async function refreshCountriesIfStale(force = false): Promise<void> {
   }
 }
 
+/** Unseen trivia cards currently in the pool, per stream. */
+export type UnseenTrivia = () => Record<TriviaStream, number>;
+
 let triviaBusy = false;
-export async function topUpTrivia(unseen: () => number): Promise<void> {
-  if (triviaBusy || !navigator.onLine || unseen() >= TRIVIA_LOW_WATER) return;
+export async function topUpTrivia(unseen: UnseenTrivia, force = false): Promise<void> {
+  if (triviaBusy || !navigator.onLine) return;
+  const s = getSettings();
+  const wantComputers = !s.disabledCategories.includes('computing') && !s.disabledTopics.includes('cs-trivia');
+  const counts = unseen();
+  const streams = (['mixed', 'computers'] as const).filter(
+    (st) => (st === 'mixed' || wantComputers) && (force || counts[st] < TRIVIA_LOW_WATER[st]),
+  );
+  if (!streams.length) return;
   triviaBusy = true;
   try {
-    sources.trivia = await refreshTrivia(2);
+    sources.trivia = await refreshTrivia([...streams]);
     status.trivia = `${sources.trivia.length} questions cached`;
     emit();
   } catch (err) {

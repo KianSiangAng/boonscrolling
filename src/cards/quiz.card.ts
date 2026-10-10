@@ -63,6 +63,7 @@ const quiz: CardModule<QuizData> = {
         id: `quiz:otdb:${q.id}`,
         type: 'quiz',
         category: q.category,
+        ...(q.topic ? { topic: q.topic } : {}),
         data: {
           question: q.question,
           answer: q.correct,
